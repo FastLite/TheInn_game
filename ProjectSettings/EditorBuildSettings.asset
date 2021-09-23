@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 29c7e63d0ea672248b415ca2b9c4e329
-  - enabled: 1
+  - enabled: 0
     path: Assets/Tyler Folder/Tyler Test Scene.unity
     guid: e0b4085ecdc30f745ac17c7dafe9d97a
+  - enabled: 1
+    path: Assets/Scenes/FirstCombination.unity
+    guid: 0e78596a8918cee47a495c2812c19c4a
   m_configObjects: {}

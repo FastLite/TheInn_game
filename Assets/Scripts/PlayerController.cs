@@ -1,15 +1,14 @@
 using UnityEngine;
-
+using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     public bool canMove = true;
 
     
-    [Header("Stance")] [Tooltip("Height of character when standing")]
-    public float capsuleHeightStanding = 1.8f;
+    [Header("Stance")] [Tooltip("Modifier of character height when standing")]
+    public float capsuleHeightStanding = 1f;
     [Tooltip("Height of character when crouching")]
-    public float capsuleHeightCrouching = 0.9f;
-    float m_TargetCharacterHeight;
+    public float capsuleHeightCrouching = 0.5f;
 
     CharacterController characterController;
     public float defaultSpeed = 7.5f;
@@ -17,9 +16,11 @@ public class PlayerController : MonoBehaviour
     public float crouchSpeedModifier = 0.75f;
     public float sprintSpeedModifier = 1.25f;
 
+    public bool isSprinting;
+
     public float gravity = 20.0f;
     private Vector3 velocity;
-
+    
 
     public Transform groundCheck;
     public float groundCheckDistance;
@@ -34,6 +35,8 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
 
         speedModifier = 1;
+        
+        Debug.Log("Starting state "+ isCrouched +"  Starting speed "+ speedModifier);
     }
 
     private void FixedUpdate()
@@ -51,6 +54,7 @@ public class PlayerController : MonoBehaviour
 
     void HandleCharacterMovement()
     {
+        //Movement
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         Vector3 move = transform.right * x + transform.forward * z;
@@ -58,22 +62,27 @@ public class PlayerController : MonoBehaviour
         velocity.y -= gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
 
-        bool isSprinting = Input.GetButton("Sprint");
+        while (!isCrouched&&!isSprinting)
+        {
+            speedModifier = 1;
+        }
+        
+        //Change speed modifer if player holds Sprint button
+         isSprinting = Input.GetButton("Sprint");
         if (isSprinting)
         {
             speedModifier = sprintSpeedModifier;
 
-
+            //If player is crouched force him to get up
             if (isCrouched)
             {
                 SetCrouchingState(false, false);
             }
         }
-        else if (!isCrouched)
-            speedModifier = 1;
 
         if (Input.GetButtonDown("Crouch"))
         {
+            isCrouched = !isCrouched;
             SetCrouchingState(!isCrouched, false);
             if (speedModifier == crouchSpeedModifier)
                 speedModifier = 1;
@@ -81,8 +90,11 @@ public class PlayerController : MonoBehaviour
             {
                 speedModifier = crouchSpeedModifier;
             }
+            Debug.Log("New crouch state is "+ isCrouched +"  New speed Modifier is "+ speedModifier);
         }
     }
+    
+    
 
 
     bool SetCrouchingState(bool crouched, bool ignoreObstructions)
@@ -90,11 +102,13 @@ public class PlayerController : MonoBehaviour
         // set appropriate heights
         if (crouched)
         {
-            m_TargetCharacterHeight = capsuleHeightCrouching;
+             //gameObject.transform.localScale = new Vector3(transform.localScale.x,capsuleHeightCrouching,transform.localScale.z);
+            // gameObject.transform.position += new Vector3(gameObject.transform.position.x,0.9f,gameObject.transform.position.z);
+            characterController.height /= 2;
         }
         else
-            m_TargetCharacterHeight = capsuleHeightStanding;
-
+            //gameObject.transform.localScale = new Vector3(transform.localScale.x,1,transform.localScale.z);
+            characterController.height *= 2;
         return true;
     }
 }
