@@ -62,10 +62,7 @@ public class PlayerController : MonoBehaviour
         velocity.y -= gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
 
-        while (!isCrouched&&!isSprinting)
-        {
-            speedModifier = 1;
-        }
+        
         
         //Change speed modifer if player holds Sprint button
          isSprinting = Input.GetButton("Sprint");
@@ -92,6 +89,11 @@ public class PlayerController : MonoBehaviour
             }
             Debug.Log("New crouch state is "+ isCrouched +"  New speed Modifier is "+ speedModifier);
         }
+
+        if (!isCrouched && !isSprinting)
+        {
+            speedModifier = 1;
+        }
     }
     
     
@@ -102,13 +104,11 @@ public class PlayerController : MonoBehaviour
         // set appropriate heights
         if (crouched)
         {
-             //gameObject.transform.localScale = new Vector3(transform.localScale.x,capsuleHeightCrouching,transform.localScale.z);
-            // gameObject.transform.position += new Vector3(gameObject.transform.position.x,0.9f,gameObject.transform.position.z);
-            characterController.height /= 2;
+             gameObject.transform.localScale = new Vector3(transform.localScale.x,capsuleHeightCrouching,transform.localScale.z);
+             gameObject.transform.position += new Vector3(gameObject.transform.position.x,0.9f,gameObject.transform.position.z);
         }
         else
-            //gameObject.transform.localScale = new Vector3(transform.localScale.x,1,transform.localScale.z);
-            characterController.height *= 2;
+            gameObject.transform.localScale = new Vector3(transform.localScale.x,1,transform.localScale.z);
         return true;
     }
 }
