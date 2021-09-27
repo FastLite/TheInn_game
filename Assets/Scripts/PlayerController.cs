@@ -32,8 +32,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        
         characterController = GetComponent<CharacterController>();
-
+        capsuleHeightStanding = characterController.height;
         speedModifier = 1;
         
         Debug.Log("Starting state "+ isCrouched +"  Starting speed "+ speedModifier);
@@ -79,8 +80,10 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Crouch"))
         {
+            
             isCrouched = !isCrouched;
-            SetCrouchingState(!isCrouched, false);
+        
+         //SetCrouchingState(!isCrouched, false);
             if (speedModifier == crouchSpeedModifier)
                 speedModifier = 1;
             else
@@ -89,7 +92,15 @@ public class PlayerController : MonoBehaviour
             }
             Debug.Log("New crouch state is "+ isCrouched +"  New speed Modifier is "+ speedModifier);
         }
+        float newHeight = capsuleHeightStanding;
+        if (isCrouched)
+        {
+            newHeight = capsuleHeightCrouching;
+        }
 
+        float previousHeight = characterController.height;
+        characterController.height = Mathf.Lerp(characterController.height, newHeight, 10 * Time.deltaTime);
+            transform.Translate(0,(characterController.height-previousHeight)*capsuleHeightCrouching,0);
         if (!isCrouched && !isSprinting)
         {
             speedModifier = 1;
@@ -104,8 +115,8 @@ public class PlayerController : MonoBehaviour
         // set appropriate heights
         if (crouched)
         {
-             gameObject.transform.localScale = new Vector3(transform.localScale.x,capsuleHeightCrouching,transform.localScale.z);
-             gameObject.transform.position += new Vector3(gameObject.transform.position.x,0.9f,gameObject.transform.position.z);
+            //adjust character controller height
+             
         }
         else
             gameObject.transform.localScale = new Vector3(transform.localScale.x,1,transform.localScale.z);
