@@ -34,6 +34,7 @@ public class SceneLoader : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
 
