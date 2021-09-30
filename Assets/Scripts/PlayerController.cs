@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     
     public bool isCrouched = false;
 
+
     void Start()
     {
         
@@ -62,7 +63,7 @@ public class PlayerController : MonoBehaviour
         characterController.Move(move * defaultSpeed * speedModifier * Time.deltaTime);
         velocity.y -= gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
-
+      
         
         
         //Change speed modifer if player holds Sprint button
@@ -82,6 +83,7 @@ public class PlayerController : MonoBehaviour
         {
             
             isCrouched = !isCrouched;
+
         
          //SetCrouchingState(!isCrouched, false);
             if (speedModifier == crouchSpeedModifier)
@@ -122,4 +124,5 @@ public class PlayerController : MonoBehaviour
             gameObject.transform.localScale = new Vector3(transform.localScale.x,1,transform.localScale.z);
         return true;
     }
+ 
 }
