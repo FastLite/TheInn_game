@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    public AudioSource clickSound;
     private void Start()
     {
         Time.timeScale = 1;
