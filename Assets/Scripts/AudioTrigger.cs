@@ -25,10 +25,10 @@ public class AudioTrigger : MonoBehaviour
         }
         if (attachedAudio.length > 20 || ignoreLenght)
         {
-            AudioManager.Instance.PlayMusic(attachedAudio, volume);
+            AudioManager.Instance.PlayMusic(attachedAudio, volume/100);
         }
         else
-            AudioManager.Instance.PlaySound(source,attachedAudio, volume);
+            AudioManager.Instance.PlaySound(source,attachedAudio, volume/100);
 
     }
 }
