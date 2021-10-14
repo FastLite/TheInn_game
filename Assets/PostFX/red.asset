@@ -66,17 +66,17 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   temperature:
-    overrideState: 0
-    value: 100
+    overrideState: 1
+    value: -85
   tint:
     overrideState: 1
-    value: -100
+    value: 17
   colorFilter:
     overrideState: 1
     value: {r: 1, g: 0, b: 0, a: 1}
   hueShift:
     overrideState: 1
-    value: -8
+    value: 14
   saturation:
     overrideState: 1
     value: 100

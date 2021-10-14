@@ -29,7 +29,7 @@ public class PickupManager : MonoBehaviour
         }
         else
         {
-            Debug.DrawRay(mainCamera.position, mainCamera.TransformDirection(Vector3.forward)* 3, Color.red);
+            Debug.DrawRay(mainCamera.position, mainCamera.TransformDirection(Vector3.forward)* hit.distance, Color.red);
             pickupHint.SetActive(false);
 
         }
