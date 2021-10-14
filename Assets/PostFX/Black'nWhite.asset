@@ -98,7 +98,7 @@ MonoBehaviour:
     value: {fileID: 0}
     defaultState: 4
   ldrLutContribution:
-    overrideState: 0
+    overrideState: 1
     value: 1
   temperature:
     overrideState: 0
@@ -117,13 +117,13 @@ MonoBehaviour:
     value: -100
   brightness:
     overrideState: 1
-    value: -46
+    value: -39
   postExposure:
     overrideState: 0
     value: 0
   contrast:
     overrideState: 1
-    value: 83
+    value: -10
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
