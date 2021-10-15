@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PressSpace2Pause : MonoBehaviour
 {
     public GameObject PauseCanvas;
+    private bool pauseActive = false;
 
     private void Start()
     {
@@ -15,11 +16,22 @@ public class PressSpace2Pause : MonoBehaviour
     // Start is called before the first frame update
     void PauseGame()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Escape))
         {
-            PauseCanvas.SetActive(true);
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
+            switch (pauseActive)
+            {
+                case false:
+                    PauseCanvas.SetActive(true);
+                    Time.timeScale = 0;
+                    Cursor.lockState = CursorLockMode.None;
+                    break;
+                case true:
+                    PauseCanvas.SetActive(false);
+                    Time.timeScale = 1;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    break;
+            }
+            
         }
     }
 

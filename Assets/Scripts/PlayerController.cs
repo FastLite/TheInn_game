@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 public class PlayerController : MonoBehaviour
@@ -41,6 +42,12 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Starting state "+ isCrouched +"  Starting speed "+ speedModifier);
     }
 
+    private void Update()
+    {
+        if (canMove)
+            HandleCharacterMovement();
+    }
+
     private void FixedUpdate()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckDistance, groundMask);
@@ -50,8 +57,7 @@ public class PlayerController : MonoBehaviour
             velocity.y = -2;
         }
 
-        if (canMove)
-            HandleCharacterMovement();
+        
     }
 
     void HandleCharacterMovement()
