@@ -15,6 +15,7 @@ public class Pickup : MonoBehaviour
     public GameObject self;
     public GameObject prefab;
     public ScriptableObject soundsPack;
+    public int objectID;
 
     private void Start()
     {

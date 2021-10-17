@@ -43,7 +43,7 @@ public class PickupManager : MonoBehaviour
         switch (item.type)
         {
             case Pickup.TypeOfPickup.Note:
-                //Take needed audio from item.audiopack SO and play it || Do after making audio system
+                //show note on the screen ↓
                 Instantiate(item.prefab, canvas);
                 //Pause the game here
                 //Add tp journal
@@ -54,7 +54,6 @@ public class PickupManager : MonoBehaviour
                 //Add short description to journal
                 break;
             case Pickup.TypeOfPickup.Quest:
-                //Take needed audio from item.audiopack SO and play it || Do after making audio system
                 //Play character voice line
                 //Add required informatio to journal
                 break;
