@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PressSpace2Pause : MonoBehaviour
+public class PauseGame : MonoBehaviour
 {
     public GameObject PauseCanvas;
     private bool pauseActive = false;
@@ -14,7 +14,7 @@ public class PressSpace2Pause : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void PauseGame()
+    void PauseUnpause()
     {
         if (Input.GetKey(KeyCode.Escape))
         {
@@ -38,6 +38,6 @@ public class PressSpace2Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PauseGame();
+        PauseUnpause();
     }
 }
