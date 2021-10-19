@@ -9,6 +9,7 @@ public class AudioTrigger : MonoBehaviour
     public float volume = 1;
     public AudioSource source;
     public bool ignoreLenght;
+    public bool didPlay;
 
     private void Start()
     {
@@ -18,6 +19,8 @@ public class AudioTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         
+        if (didPlay) return;
+        didPlay = true;
         if (!other.CompareTag("Player")) return;
         if (source==null)
         {
