@@ -49,6 +49,8 @@ public class PickupManager : MonoBehaviour
                 //Add tp journal
                 break;
             case Pickup.TypeOfPickup.Audio:
+                AudioManager.Instance.PlaySound(item.gameObject.GetComponent<AudioSource>(),item.sound, 1);
+                //Change audio source to player itself
                 //Take needed audio from item.audiopack SO and play it || Do after making audio system
                 //Then play audio recording from that item
                 //Add short description to journal

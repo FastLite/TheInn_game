@@ -14,7 +14,7 @@ public class Pickup : MonoBehaviour
     public string nameOfItem, description;
     public GameObject self;
     public GameObject prefab;
-    public ScriptableObject soundsPack;
+    public AudioClip sound;
     public int objectID;
 
     private void Start()
