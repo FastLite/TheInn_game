@@ -30817,9 +30817,9 @@ Transform:
   - {fileID: 1351673346}
   - {fileID: 827055539}
   - {fileID: 794956061}
-  - {fileID: 1851910876}
-  - {fileID: 1128340673}
   - {fileID: 1625528765}
+  - {fileID: 1128340673}
+  - {fileID: 1851910876}
   - {fileID: 1141657305}
   - {fileID: 2017552761}
   - {fileID: 348424316}
@@ -67389,7 +67389,7 @@ Transform:
   - {fileID: 1360203146}
   - {fileID: 450605532}
   m_Father: {fileID: 811900996}
-  m_RootOrder: 21
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1630671146
 GameObject:
@@ -82760,6 +82760,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: toilet_modeling_corona
       objectReference: {fileID: 0}
+    - target: {fileID: 1863191399037859163, guid: 092fdd45194b00a49b520e432cc28fe7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab755092f695ec649ac9712c222b66f8, type: 2}
+    - target: {fileID: 6721540362325620393, guid: 092fdd45194b00a49b520e432cc28fe7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab755092f695ec649ac9712c222b66f8, type: 2}
+    - target: {fileID: 6721540362325620393, guid: 092fdd45194b00a49b520e432cc28fe7, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab755092f695ec649ac9712c222b66f8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 092fdd45194b00a49b520e432cc28fe7, type: 3}
 --- !u!4 &1972422545 stripped
