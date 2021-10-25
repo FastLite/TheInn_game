@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 89e49a1021e42be4aa548f9fadb950cc
+=======
+guid: f94d5920ed5fa1e4da525505600484c1
+>>>>>>> Scare-Triggers
 AudioImporter:
   externalObjects: {}
   serializedVersion: 6

@@ -59,7 +59,11 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+<<<<<<< HEAD:Assets/HongshengFolder/prefab/BedSingle01emptyV1.prefab
   - {fileID: 2100000, guid: ab755092f695ec649ac9712c222b66f8, type: 2}
+=======
+  - {fileID: 824015559753126921, guid: 8c5f4458a48407645876dff4f2fa10ee, type: 3}
+>>>>>>> 1891f07d58288009c9c541e285b0ec2775621396:Assets/HongshengFolder/2/Prefabs/BedSingle01emptyV1.prefab
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

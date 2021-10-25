@@ -26,7 +26,11 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material
+<<<<<<< HEAD:Assets/HongshengFolder/prefabMesh/BedSingle01empty.fbx.meta
     second: {fileID: 2100000, guid: ab755092f695ec649ac9712c222b66f8, type: 2}
+=======
+    second: {fileID: 8486936951020155453, guid: 8c5f4458a48407645876dff4f2fa10ee, type: 3}
+>>>>>>> 1891f07d58288009c9c541e285b0ec2775621396:Assets/HongshengFolder/prefab/barcounter/Textures/regal_gotov.max.meta
   materials:
     materialImportMode: 1
     materialName: 0

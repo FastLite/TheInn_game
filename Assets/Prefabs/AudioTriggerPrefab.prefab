@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c806f22d692494ea25d3d9511961c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachedAudio: {fileID: 8300000, guid: 29929227ce35c4647bcedb56e94313af, type: 3}
+  attachedAudio: {fileID: 8300000, guid: b48ad1a18bc4af643a2a55b1e6ed95fc, type: 3}
   volume: 0
   source: {fileID: 0}
   ignoreLenght: 0
