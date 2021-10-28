@@ -7,7 +7,7 @@ public class Pickup : MonoBehaviour
 {
     public enum TypeOfPickup 
     {
-        Note, Audio, Quest
+        Note, Audio, Quest, 
     }
 
     public TypeOfPickup type;

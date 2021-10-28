@@ -114,10 +114,6 @@ public class PlayerController : MonoBehaviour
             speedModifier = 1;
         }
     }
-    
-    
-
-
     bool SetCrouchingState(bool crouched, bool ignoreObstructions)
     {
         // set appropriate heights
@@ -130,5 +126,17 @@ public class PlayerController : MonoBehaviour
             gameObject.transform.localScale = new Vector3(transform.localScale.x,1,transform.localScale.z);
         return true;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("End"))
+        {
+            GameManager.instance.ENDgame("123");
+        }
+        else
+        {
+            Debug.Log(other.gameObject.tag);
+        }
+    }
+    
  
 }

@@ -27,6 +27,19 @@ public class PickupManager : MonoBehaviour
                hit.collider.gameObject.SetActive(false);
             }
         }
+        else if (Physics.Raycast(mainCamera.position, mainCamera.TransformDirection(Vector3.forward), out var hite, raycastDistance) && hite.collider.gameObject.CompareTag("door"))
+        {
+            pickupHint.SetActive(true);
+            Debug.Log("Did Hit door");
+
+            if (Input.GetButton("Interact"))
+            {
+                Debug.Log("should work now");
+
+                hit.collider.gameObject.GetComponent<Door>().rotateDoor();
+
+            }
+        }
         else
         {
             Debug.DrawRay(mainCamera.position, mainCamera.TransformDirection(Vector3.forward)* hit.distance, Color.red);
@@ -61,4 +74,5 @@ public class PickupManager : MonoBehaviour
                 break;
         }
     }
+    
 }

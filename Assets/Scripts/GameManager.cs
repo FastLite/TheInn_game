@@ -6,6 +6,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+    public GameObject endScreen;
+    public bool gameIsEnded = false;
     
     public List<Pickup> allPickups = new List<Pickup>();
     public List<Pickup> playerPickedPickups = new List<Pickup>();
@@ -25,7 +27,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        throw new NotImplementedException();
     }
 
     private void CompareLists()
@@ -37,4 +38,10 @@ public class GameManager : MonoBehaviour
         }
         
     }
+
+    public void ENDgame(string condition)
+    {
+        endScreen.SetActive(true);
+    }
+    
 }
