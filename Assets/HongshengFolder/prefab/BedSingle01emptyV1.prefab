@@ -54,16 +54,10 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-<<<<<<< HEAD:Assets/HongshengFolder/prefab/BedSingle01emptyV1.prefab
-  - {fileID: 2100000, guid: ab755092f695ec649ac9712c222b66f8, type: 2}
-=======
-  - {fileID: 824015559753126921, guid: 8c5f4458a48407645876dff4f2fa10ee, type: 3}
->>>>>>> 1891f07d58288009c9c541e285b0ec2775621396:Assets/HongshengFolder/2/Prefabs/BedSingle01emptyV1.prefab
+  - {fileID: 2100000, guid: c8c42662026a30544a7c3bb902859d48, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -71,7 +65,6 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -84,4 +77,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
