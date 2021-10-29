@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BASE_COLOR_MAP:
-        m_Texture: {fileID: 2800000, guid: b4d6017c38f172848a470bedb69430f4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4f37929f059b1524a8249ca819509556, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BUMP_MAP:
@@ -72,7 +72,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _REFLECTIONS_COLOR_MAP:
-        m_Texture: {fileID: 2800000, guid: b4d6017c38f172848a470bedb69430f4, type: 3}
+        m_Texture: {fileID: 2800000, guid: fcd39008a9da1de428d9eb1a37e91dad, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _REFLECTIONS_IOR_MAP:
