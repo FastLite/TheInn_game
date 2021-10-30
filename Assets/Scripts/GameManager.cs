@@ -39,9 +39,17 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void ENDgame(string condition)
+    public void ENDgame(bool isWin)
     {
-        endScreen.SetActive(true);
+        if (isWin)
+        {
+            endScreen.SetActive(true);            
+        }
+        else
+        {
+            //respawn player
+        }
+
     }
     
 }

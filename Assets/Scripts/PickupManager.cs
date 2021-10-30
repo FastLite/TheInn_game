@@ -12,6 +12,7 @@ public class PickupManager : MonoBehaviour
     public GameObject pickupHint;
     public Transform canvas;
     public Transform mainCamera;
+    public Pickup currentKey;
     
     private void FixedUpdate()
     {
@@ -36,7 +37,7 @@ public class PickupManager : MonoBehaviour
             {
                 Debug.Log("should work now");
 
-                hit.collider.gameObject.GetComponent<Door>().rotateDoor();
+               hit.collider.gameObject.GetComponent<Door>().RotateDoor(currentKey);
 
             }
         }
@@ -69,7 +70,8 @@ public class PickupManager : MonoBehaviour
                 //Add short description to journal
                 break;
             case Pickup.TypeOfPickup.Quest:
-                //Play character voice line
+                currentKey = item;
+                Debug.Log("key#" + item.objectID +" picked up and stored instead of " + currentKey);
                 //Add required informatio to journal
                 break;
         }

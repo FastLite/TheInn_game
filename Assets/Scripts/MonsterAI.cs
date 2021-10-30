@@ -78,6 +78,7 @@ public class MonsterAI : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Player")) Debug.Log("Player should die here");
+        GameManager.instance.ENDgame(false);
+        
     }
 }

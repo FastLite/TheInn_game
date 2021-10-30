@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("End"))
         {
-            GameManager.instance.ENDgame("123");
+            GameManager.instance.ENDgame(true);
         }
         else
         {
