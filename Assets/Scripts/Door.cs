@@ -13,7 +13,7 @@ public class Door : MonoBehaviour
     public int keyID;
     public float angle = -120;
 
-    public void RotateDoor(Pickup item)
+    public void InteractWithDoor(Pickup item)
     {
         if (needKey && !doorOpen)
         {
@@ -21,21 +21,25 @@ public class Door : MonoBehaviour
             if (item.objectID == keyID)
             {
                 Debug.Log("Player has the right key");
-                Open();
+                Open(true);
             }
         }
         if (!doorOpen)
         {
             Debug.Log("Door doesn't need a key ");
-            Open();
+            Open(true);
+        }
+        else if (doorOpen)
+        {
+            Debug.Log("Door is closing");
+            Open(false);
         }
     }
 
-    public void Open()
+    public void Open(bool isOpen)
     {
-        animator.SetBool("isOpen", true);
-        //transform.GetChild(0).gameObject.transform.Rotate(0.0f, -angle, 0.0f, Space.Self);
-        doorOpen = true;
+        animator.SetBool("isOpen", isOpen);
+        doorOpen = !doorOpen;
     }
 
 }

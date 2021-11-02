@@ -24,21 +24,23 @@ public class PickupManager : MonoBehaviour
             pickupHint.SetActive(true);
             if (Input.GetButton("Interact"))
             {
-                ItemPickedUp(hit.collider.gameObject.GetComponent<Pickup>());
-               hit.collider.gameObject.SetActive(false);
+                GameObject item = hit.collider.gameObject;
+                ItemPickedUp(item.GetComponent<Pickup>());
+                if (item.GetComponent<Pickup>().type == Pickup.TypeOfPickup.Audio)
+                {
+                    return;
+                }
+                item.SetActive(false);
             }
         }
         else if (Physics.Raycast(mainCamera.position, mainCamera.TransformDirection(Vector3.forward), out var hite, raycastDistance) && hite.collider.gameObject.CompareTag("door"))
         {
             pickupHint.SetActive(true);
             Debug.Log("Did Hit door");
-
             if (Input.GetButton("Interact"))
             {
                 Debug.Log("should work now");
-
-               hit.collider.gameObject.GetComponent<Door>().RotateDoor(currentKey);
-
+                hit.collider.gameObject.GetComponent<Door>().InteractWithDoor(currentKey);
             }
         }
         else
@@ -53,12 +55,13 @@ public class PickupManager : MonoBehaviour
     
     public void ItemPickedUp(Pickup item)
     {   
-        inventory.Add(item);
+        
         switch (item.type)
         {
             case Pickup.TypeOfPickup.Note:
                 //show note on the screen ↓
                 Instantiate(item.prefab, canvas);
+                inventory.Add(item);
                 //Pause the game here
                 //Add tp journal
                 break;
@@ -70,6 +73,7 @@ public class PickupManager : MonoBehaviour
                 //Add short description to journal
                 break;
             case Pickup.TypeOfPickup.Quest:
+                inventory.Add(item);
                 currentKey = item;
                 Debug.Log("key#" + item.objectID +" picked up and stored instead of " + currentKey);
                 //Add required informatio to journal

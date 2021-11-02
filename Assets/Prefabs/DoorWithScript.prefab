@@ -175,3 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee18bc251263e5347bdb759a14000eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1732401780598033850}
+  needKey: 0
+  keyID: 0
+  angle: -120
