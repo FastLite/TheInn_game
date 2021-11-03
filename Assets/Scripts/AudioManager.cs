@@ -8,7 +8,13 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance = null;
     public AudioSource player;
     public AudioClip startingMusic;
-	
+    public AudioMixer audioMixer;
+    public void SetVolume(float volume)  //volume slider controller
+    {
+        audioMixer.SetFloat("volume", volume);
+        
+    }
+    
     private void Awake()
     {
         if (Instance == null)
