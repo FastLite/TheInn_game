@@ -13,6 +13,8 @@ public class Door : MonoBehaviour
     public int keyID;
     public float angle = -120;
 
+    public AudioSource creak;
+
     public void InteractWithDoor(Pickup item)
     {
         if (needKey && !doorOpen)
@@ -40,6 +42,7 @@ public class Door : MonoBehaviour
     {
         animator.SetBool("isOpen", isOpen);
         doorOpen = !doorOpen;
+        creak.Play();
     }
 
 }
