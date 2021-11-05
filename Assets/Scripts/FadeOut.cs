@@ -11,7 +11,6 @@ public class FadeOut : MonoBehaviour
         FadeIn();
     }
 
-    // Update is called once per frame
     void FadeIn()
     {
         blackFade.CrossFadeAlpha(0, 2, false); //turns off alpha

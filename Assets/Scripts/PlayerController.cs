@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     public LayerMask groundMask;
 
+    public Vector3 moveDir;
+
+    
 
     void Start()
     {
@@ -50,8 +53,8 @@ public class PlayerController : MonoBehaviour
         //Movement
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        Vector3 move = transform.right * x + transform.forward * z;
-        characterController.Move(move * defaultSpeed * speedModifier * Time.deltaTime);
+        moveDir = transform.right * x + transform.forward * z;
+        characterController.Move(moveDir * defaultSpeed * speedModifier * Time.deltaTime);
         velocity.y -= gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
 
