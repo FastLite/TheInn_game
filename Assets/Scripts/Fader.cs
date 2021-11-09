@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class FadeOut : MonoBehaviour
+public class Fader : MonoBehaviour
 {
     public Image blackFade;
     void Start()
@@ -14,5 +14,10 @@ public class FadeOut : MonoBehaviour
     void FadeIn()
     {
         blackFade.CrossFadeAlpha(0, 2, false); //turns off alpha
+    }
+
+    void FadeOut()
+    {
+        blackFade.CrossFadeAlpha(2, 0, true); //turns on Alpha
     }
 }
