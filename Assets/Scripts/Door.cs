@@ -17,7 +17,7 @@ public class Door : MonoBehaviour
 
     public void InteractWithDoor(Pickup item)
     {
-        if (needKey && !doorOpen)
+        if (needKey && !doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("wait"))
         {
             Debug.Log("Door needs key #"+keyID);
             if (item.objectID == keyID)
@@ -26,12 +26,12 @@ public class Door : MonoBehaviour
                 Open(true);
             }
         }
-        if (!doorOpen)
+        if (!doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("wait"))
         {
             Debug.Log("Door doesn't need a key ");
             Open(true);
         }
-        else if (doorOpen)
+        else if (doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("open"))
         {
             Debug.Log("Door is closing");
             Open(false);

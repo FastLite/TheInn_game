@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed70053c29d13664fb2acbf4fd604cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 300
+  sensitivity: 100
   playerBody: {fileID: 8039625684974258453}
 --- !u!114 &6827472918558215360
 MonoBehaviour:
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkingBobbingSpeed: 14
-  bobbingAmount: 0.05
+  bobbingAmount: 0.03
   controller: {fileID: 8039625684974258452}
 --- !u!1 &8039625684974258450
 GameObject:
@@ -308,7 +308,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1.8
   m_Radius: 0.3
-  m_SlopeLimit: 45
+  m_SlopeLimit: 15.01
   m_StepOffset: 0.7
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  defaultSpeed: 3
+  defaultSpeed: 2
   sprintSpeedModifier: 1.5
   isSprinting: 0
   gravity: 20
