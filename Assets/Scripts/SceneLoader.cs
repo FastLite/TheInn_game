@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public AudioSource clickSound;
+    
     private void Start()
     {
         Time.timeScale = 1;
@@ -20,6 +21,23 @@ public class SceneLoader : MonoBehaviour
     {
         // It will load any scene in the build settings
         SceneManager.LoadScene(sceneNum);
+    }
+
+    public void LoadingScreenLoader (int sceneIndex)
+    {
+        StartCoroutine(LoadAsynchronously(sceneIndex));
+    }
+
+    IEnumerator LoadAsynchronously (int sceneIndex)
+    {
+        //This will load a scene at the same time as another scene being open.
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+            Debug.Log(progress);
+            yield return null;
+        }
     }
 
     public void QuitGame()
