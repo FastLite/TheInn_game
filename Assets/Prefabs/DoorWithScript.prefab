@@ -162,8 +162,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9574553, y: 2, z: 0.24649048}
-  m_Center: {x: -0.020748975, y: 1.0000057, z: 0.007879257}
+  m_Size: {x: 0.9574553, y: 2, z: 0.3000636}
+  m_Center: {x: -0.020748975, y: 1.0000057, z: 0.03466589}
 --- !u!114 &5952053350325316219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,8 +177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1732401780598033850}
-  needKey: 0
-  keyID: 2
+  needKey: 1
+  keyID: 1
   angle: -120
   creak: {fileID: -691514715118345185}
 --- !u!82 &-691514715118345185
