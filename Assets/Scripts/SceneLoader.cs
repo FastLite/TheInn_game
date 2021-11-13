@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
     public AudioSource clickSound;
-    
+
+    public GameObject loadingScreen;
+    public Slider loadingBar;
+    public Text progressText;
     private void Start()
     {
         Time.timeScale = 1;
@@ -26,6 +30,7 @@ public class SceneLoader : MonoBehaviour
     public void LoadingScreenLoader (int sceneIndex)
     {
         StartCoroutine(LoadAsynchronously(sceneIndex));
+        loadingScreen.SetActive(true);
     }
 
     IEnumerator LoadAsynchronously (int sceneIndex)
@@ -35,7 +40,8 @@ public class SceneLoader : MonoBehaviour
         while (!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress / .9f);
-            Debug.Log(progress);
+            loadingBar.value = progress;
+            progressText.text = "Loading... " + progress * 100f + "%";
             yield return null;
         }
     }
