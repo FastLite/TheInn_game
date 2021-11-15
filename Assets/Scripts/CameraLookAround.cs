@@ -11,7 +11,7 @@ public class CameraLookAround : MonoBehaviour
     public Transform playerBody;
 
     void Start()
-    {
+    {    sensitivity = PlayerPrefs.GetFloat(nameof(sensitivity));
         Cursor.lockState = CursorLockMode.Locked;
     }
     void Update()
@@ -25,6 +25,13 @@ public class CameraLookAround : MonoBehaviour
         xRotation = Mathf.Clamp( xRotation,-80, 85);
         transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
         playerBody.Rotate(Vector3.up * mouseX);    
+    }
+
+    public void ChangeSensitivity(float newValue)
+    {
+        PlayerPrefs.SetFloat(nameof(sensitivity), newValue);
+        sensitivity = PlayerPrefs.GetFloat(nameof(sensitivity));
+        Debug.Log(sensitivity);
     }
 
     

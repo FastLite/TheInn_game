@@ -7,6 +7,7 @@ public class PauseGame : MonoBehaviour
 {
     public GameObject PauseCanvas;
     private bool pauseActive = false;
+    public  AudioListener pLayerListener;
 
     private void Start()
     {
@@ -14,30 +15,33 @@ public class PauseGame : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void PauseUnpause()
+    public void PauseUnpause()
     {
-        if (Input.GetKey(KeyCode.Escape))
-        {
             switch (pauseActive)
             {
                 case false:
                     PauseCanvas.SetActive(true);
+                    pauseActive = true;
                     Time.timeScale = 0;
                     Cursor.lockState = CursorLockMode.None;
+                    AudioListener.pause = true;
+                    Debug.Log(AudioListener.pause);
+
                     break;
                 case true:
                     PauseCanvas.SetActive(false);
+                    pauseActive = false;
                     Time.timeScale = 1;
                     Cursor.lockState = CursorLockMode.Locked;
+                    AudioListener.pause = false;
+                    Debug.Log(AudioListener.pause);
                     break;
             }
-            
-        }
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {if (Input.GetKey(KeyCode.Escape))
         PauseUnpause();
     }
 }

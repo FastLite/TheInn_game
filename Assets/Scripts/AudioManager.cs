@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource player;
     public AudioClip startingMusic;
     public AudioMixer audioMixer;
+    
     public void SetVolume(float volume)  //volume slider controller
     {
         audioMixer.SetFloat("volume", volume);
@@ -49,6 +50,5 @@ public class AudioManager : MonoBehaviour
         }
         
         src.Play();
-        
     }
 }
