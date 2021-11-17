@@ -20,11 +20,10 @@ public class Door : MonoBehaviour
         if (needKey && !doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("wait"))
         {
             Debug.Log("Door needs key #"+keyID);
-            if (item.objectID == keyID)
-            {
-                Debug.Log("Player has the right key");
-                Open(true);
-            }
+            if (item.objectID != keyID)
+                return;
+            
+            Open(true);
         }
         if (!doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("wait"))
         {

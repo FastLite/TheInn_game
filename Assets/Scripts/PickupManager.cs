@@ -22,7 +22,7 @@ public class PickupManager : MonoBehaviour
             Debug.DrawRay(mainCamera.position, mainCamera.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             Debug.Log("Did Hit pickup object");
             pickupHint.SetActive(true);
-            if (Input.GetButton("Interact"))
+            if (Input.GetButtonDown("Interact"))
             {
                 GameObject item = hit.collider.gameObject;
                 ItemPickedUp(item.GetComponent<Pickup>());
@@ -37,7 +37,7 @@ public class PickupManager : MonoBehaviour
         {
             pickupHint.SetActive(true);
             Debug.Log("Did Hit door");
-            if (Input.GetButton("Interact"))
+            if (Input.GetButtonDown("Interact"))
             {
                 Debug.Log("should work now");
                 hit.collider.gameObject.GetComponent<Door>().InteractWithDoor(currentKey);
