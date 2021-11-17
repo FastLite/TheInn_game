@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickupManager : MonoBehaviour
 {
     public List<Pickup> inventory = new List<Pickup>();
-    
-    
+    public GameObject keyImg;
+
     [SerializeField]
     private float raycastDistance = 2;
     public GameObject pickupHint;
@@ -31,6 +32,7 @@ public class PickupManager : MonoBehaviour
                     return;
                 }
                 item.SetActive(false);
+                keyImg.SetActive(true);
             }
         }
         else if (Physics.Raycast(mainCamera.position, mainCamera.TransformDirection(Vector3.forward), out var hite, raycastDistance) && hite.collider.gameObject.CompareTag("door"))
@@ -41,6 +43,7 @@ public class PickupManager : MonoBehaviour
             {
                 Debug.Log("should work now");
                 hit.collider.gameObject.GetComponent<Door>().InteractWithDoor(currentKey);
+                keyImg.SetActive(false);
             }
         }
         else
