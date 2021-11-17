@@ -7,6 +7,7 @@ public class PickupManager : MonoBehaviour
 {
     public List<Pickup> inventory = new List<Pickup>();
     public GameObject keyImg;
+    public LayerMask ignoreMe;
 
     [SerializeField]
     private float raycastDistance = 2;
@@ -18,7 +19,7 @@ public class PickupManager : MonoBehaviour
     private void FixedUpdate()
     {
         //Check if pickup object is in distance to be picked up
-        if (Physics.Raycast(mainCamera.position, mainCamera.TransformDirection(Vector3.forward), out var hit, raycastDistance) && hit.collider.gameObject.CompareTag("pickup"))
+        if (Physics.Raycast(mainCamera.position, mainCamera.TransformDirection(Vector3.forward), out var hit, raycastDistance, ignoreMe) && hit.collider.gameObject.CompareTag("pickup"))
         {
             Debug.DrawRay(mainCamera.position, mainCamera.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             Debug.Log("Did Hit pickup object");
@@ -32,7 +33,6 @@ public class PickupManager : MonoBehaviour
                     return;
                 }
                 item.SetActive(false);
-                keyImg.SetActive(true);
             }
         }
         else if (Physics.Raycast(mainCamera.position, mainCamera.TransformDirection(Vector3.forward), out var hite, raycastDistance) && hite.collider.gameObject.CompareTag("door"))
@@ -42,8 +42,11 @@ public class PickupManager : MonoBehaviour
             if (Input.GetButtonDown("Interact"))
             {
                 Debug.Log("should work now");
-                hit.collider.gameObject.GetComponent<Door>().InteractWithDoor(currentKey);
-                keyImg.SetActive(false);
+                Debug.Log(hite.collider.GetComponent<Door>().keyID);
+                if (hit.collider.GetComponent<Door>().InteractWithDoor(currentKey))
+                {
+                    keyImg.SetActive(false);
+                }
             }
         }
         else
@@ -75,6 +78,7 @@ public class PickupManager : MonoBehaviour
             case Pickup.TypeOfPickup.Quest:
                 inventory.Add(item);
                 currentKey = item;
+                keyImg.SetActive(true);
                 Debug.Log("key#" + item.objectID +" picked up and stored instead of " + currentKey);
                 //Add required informatio to journal
                 break;
