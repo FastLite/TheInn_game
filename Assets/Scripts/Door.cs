@@ -8,6 +8,7 @@ public class Door : MonoBehaviour
     public Animator animator;
     private bool doorOpen = false;
     private bool doorCanBeClosed = true;
+    public bool forcedClosed = false;
     
     [SerializeField]
     private bool needKey = false;
@@ -34,7 +35,7 @@ public class Door : MonoBehaviour
             Open(true);
             return false ;
         }
-        else if (doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("open"))
+        else if (doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("open") &&!doorCanBeClosed)
         {
             Debug.Log("Door is closing");
             Open(false);
