@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -40,20 +39,17 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public IEnumerator ENDgame(bool isWin)
+    public void ENDgame(bool isWin)
     {
         if (isWin)
         {
-            endScreen.SetActive(true);
-
-            yield return new WaitForSeconds(5f);
-            endScreen.SetActive(false);
-            SceneManager.LoadScene(2);
+            endScreen.SetActive(true);            
         }
         else
         {
             //respawn player
         }
+
     }
     
 }
