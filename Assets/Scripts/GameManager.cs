@@ -44,15 +44,16 @@ public class GameManager : MonoBehaviour
     {
         if (isWin)
         {
-            endScreen.SetActive(true);            
+            endScreen.SetActive(true);
+
+            yield return new WaitForSeconds(5f);
+            endScreen.SetActive(false);
+            SceneManager.LoadScene(2);
         }
         else
         {
             //respawn player
         }
-        yield return new WaitForSeconds(5f);
-        endScreen.SetActive(false);
-        SceneManager.LoadScene(2);
     }
     
 }
