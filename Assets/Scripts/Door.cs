@@ -18,30 +18,35 @@ public class Door : MonoBehaviour
 
     public AudioSource creak;
 
-    public bool InteractWithDoor(Pickup item)
+    public string InteractWithDoor(Pickup item)
     {
+        if (forcedClosed)
+        {
+            Debug.Log("door is closed by developer");
+            return "Seems like door is closed from the other side";
+        }
         if (needKey && !doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("wait"))
         {
             Debug.Log("Door needs key #"+keyID);
             if (item.objectID != keyID)
-                return false ;
+                return "This door is locked, I gotta find a key" ;
             
             Open(true);
-            return true ;
+            return "That was the right key";
         }
         if (!doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("wait"))
         {
             Debug.Log("Door doesn't need a key ");
             Open(true);
-            return false ;
+            return null ;
         }
-        else if (doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("open") &&!doorCanBeClosed)
+        if (doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("open") &&!doorCanBeClosed)
         {
             Debug.Log("Door is closing");
             Open(false);
-            return false ;
+            return null ;
         }
-        return false ;
+        return null ;
     }
 
     public void Open(bool isOpen)
