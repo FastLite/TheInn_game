@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void ENDgame(bool isWin)
+    public IEnumerator ENDgame(bool isWin)
     {
         if (isWin)
         {
@@ -49,7 +50,9 @@ public class GameManager : MonoBehaviour
         {
             //respawn player
         }
-
+        yield return new WaitForSeconds(5f);
+        endScreen.SetActive(false);
+        SceneManager.LoadScene(2);
     }
     
 }

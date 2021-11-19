@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/FirstCombination.unity
     guid: 0e78596a8918cee47a495c2812c19c4a
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+    guid: 397d1d6a1d2344b45a40480552550df0
   m_configObjects: {}
