@@ -1,28 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class PickupManager : MonoBehaviour
 {
     public List<Pickup> inventory = new List<Pickup>();
-    
-    
+    public GameObject keyImg;
+    public LayerMask ignoreMe;
+    public TextMeshProUGUI onScreenText;
+    public float fadeDuration = 2;
+
     [SerializeField]
     private float raycastDistance = 2;
-    public GameObject pickupHint;
+    [FormerlySerializedAs("pickupHint")] public GameObject interactHint;
     public Transform canvas;
     public Transform mainCamera;
     public Pickup currentKey;
-    
-    private void FixedUpdate()
+
+
+    private void Start()
+    {
+        onScreenText.text = "";
+        onScreenText.alpha = 0;
+    }
+
+    private void Update()
     {
         //Check if pickup object is in distance to be picked up
-        if (Physics.Raycast(mainCamera.position, mainCamera.TransformDirection(Vector3.forward), out var hit, raycastDistance) && hit.collider.gameObject.CompareTag("pickup"))
+        if (Physics.Raycast(mainCamera.position, mainCamera.TransformDirection(Vector3.forward), out var hit, raycastDistance, ignoreMe) && hit.collider.gameObject.CompareTag("pickup"))
         {
             Debug.DrawRay(mainCamera.position, mainCamera.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             Debug.Log("Did Hit pickup object");
-            pickupHint.SetActive(true);
-            if (Input.GetButton("Interact"))
+            interactHint.SetActive(true);
+            if (Input.GetButtonDown("Interact"))
             {
                 GameObject item = hit.collider.gameObject;
                 ItemPickedUp(item.GetComponent<Pickup>());
@@ -31,31 +45,41 @@ public class PickupManager : MonoBehaviour
                     return;
                 }
                 item.SetActive(false);
+                
             }
         }
         else if (Physics.Raycast(mainCamera.position, mainCamera.TransformDirection(Vector3.forward), out var hite, raycastDistance) && hite.collider.gameObject.CompareTag("door"))
         {
-            pickupHint.SetActive(true);
-            Debug.Log("Did Hit door");
-            if (Input.GetButton("Interact"))
+            interactHint.SetActive(true);
+            if (Input.GetButtonDown("Interact"))
             {
-                Debug.Log("should work now");
-                hit.collider.gameObject.GetComponent<Door>().InteractWithDoor(currentKey);
+                Debug.Log(hite.collider.GetComponent<Door>().keyID);
+                string currentdoorText = hit.collider.GetComponent<Door>().InteractWithDoor(currentKey);
+                if (currentdoorText == null)
+                {
+                    return;
+                }
+                StartCoroutine(TextOnScreen(currentdoorText));
+                if (currentdoorText == "That was the right key")
+                {
+                    keyImg.SetActive(false);
+                }
             }
         }
         else
         {
             Debug.DrawRay(mainCamera.position, mainCamera.TransformDirection(Vector3.forward)* hit.distance, Color.red);
-            pickupHint.SetActive(false);
+            interactHint.SetActive(false);
 
         }
     }
     
     
     
-    public void ItemPickedUp(Pickup item)
+    private void ItemPickedUp(Pickup item)
     {   
-        
+        StartCoroutine(TextOnScreen(item.description));
+
         switch (item.type)
         {
             case Pickup.TypeOfPickup.Note:
@@ -72,10 +96,23 @@ public class PickupManager : MonoBehaviour
             case Pickup.TypeOfPickup.Quest:
                 inventory.Add(item);
                 currentKey = item;
+                keyImg.SetActive(true);
+
                 Debug.Log("key#" + item.objectID +" picked up and stored instead of " + currentKey);
                 //Add required informatio to journal
                 break;
         }
     }
+
+    IEnumerator TextOnScreen(string inputText)
+    {
+        onScreenText.alpha = 1;
+        onScreenText.text = inputText;
+        yield return new WaitForSeconds(2);
+        onScreenText.CrossFadeAlpha(0, fadeDuration, true);
+
+    }
+
+   
     
 }

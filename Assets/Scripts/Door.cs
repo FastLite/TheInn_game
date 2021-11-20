@@ -7,6 +7,9 @@ public class Door : MonoBehaviour
 {
     public Animator animator;
     private bool doorOpen = false;
+    private bool doorCanBeClosed = true;
+    public bool forcedClosed = false;
+    
     [SerializeField]
     private bool needKey = false;
 
@@ -15,27 +18,35 @@ public class Door : MonoBehaviour
 
     public AudioSource creak;
 
-    public void InteractWithDoor(Pickup item)
+    public string InteractWithDoor(Pickup item)
     {
+        if (forcedClosed)
+        {
+            Debug.Log("door is closed by developer");
+            return "Seems like door is closed from the other side";
+        }
         if (needKey && !doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("wait"))
         {
             Debug.Log("Door needs key #"+keyID);
-            if (item.objectID == keyID)
-            {
-                Debug.Log("Player has the right key");
-                Open(true);
-            }
+            if (item.objectID != keyID)
+                return "This door is locked, I gotta find a key" ;
+            
+            Open(true);
+            return "That was the right key";
         }
         if (!doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("wait"))
         {
             Debug.Log("Door doesn't need a key ");
             Open(true);
+            return null ;
         }
-        else if (doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("open"))
+        if (doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("open") &&!doorCanBeClosed)
         {
             Debug.Log("Door is closing");
             Open(false);
+            return null ;
         }
+        return null ;
     }
 
     public void Open(bool isOpen)
