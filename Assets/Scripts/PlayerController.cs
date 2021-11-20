@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using UnityEditor.Audio;
 public class PlayerController : MonoBehaviour
 {
     public bool canMove = true;
@@ -24,12 +25,14 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 moveDir;
 
-    
+    public AudioSource footsteps;
+    public AudioClip footstepSound;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         speedModifier = 1;
+        footsteps = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -65,6 +68,14 @@ public class PlayerController : MonoBehaviour
         {
             speedModifier = 1;
         }
+
+        if (characterController.isGrounded == true && characterController.velocity.magnitude > .1
+         && GetComponent<AudioSource>().isPlaying == false)
+        {
+            GetComponent<AudioSource>().Play();
+
+        }
+       
     }
     private void OnTriggerEnter(Collider other)
     {
