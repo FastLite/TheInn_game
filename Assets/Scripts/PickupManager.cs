@@ -25,7 +25,7 @@ public class PickupManager : MonoBehaviour
     private void Start()
     {
         onScreenText.text = "";
-        onScreenText.alpha = 0;
+        onScreenText.alpha = 1;
     }
 
     private void Update()
@@ -105,11 +105,12 @@ public class PickupManager : MonoBehaviour
     }
 
     IEnumerator TextOnScreen(string inputText)
-    {
-        onScreenText.alpha = 1;
+    {       
+        onScreenText.gameObject.SetActive(true);
+
         onScreenText.text = inputText;
         yield return new WaitForSeconds(2);
-        onScreenText.CrossFadeAlpha(0, fadeDuration, true);
+        onScreenText.gameObject.SetActive(false);
 
     }
 

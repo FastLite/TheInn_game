@@ -6,9 +6,9 @@ using UnityEngine;
 public class CustomTrigger : MonoBehaviour
 {
     public Animator anim;
-    public Door door;
+    public Door door = null;
     public GameObject myObject;
-    public bool turnOff, lockDoor;
+    public bool turnOn, lockDoor, playdoorAnimation;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,8 +17,21 @@ public class CustomTrigger : MonoBehaviour
             anim.Play(0);
         }
 
-        door.forcedClosed = lockDoor;
-        door.animator.SetBool("isOpen", !lockDoor);
-        myObject.SetActive(!turnOff);
+        if (door!=null)
+        {
+            Debug.Log("interact with door");
+            door.forcedClosed = lockDoor;
+            if (playdoorAnimation)
+            {
+                door.Open(!lockDoor);
+            }
+        }
+
+        if (myObject!=null)
+        {
+            myObject.SetActive(turnOn);
+        }
+        Destroy(gameObject);
+        
     }
 }

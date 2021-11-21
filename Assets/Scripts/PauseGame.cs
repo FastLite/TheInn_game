@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class PauseGame : MonoBehaviour
 {
     public GameObject PauseCanvas;
+    public GameObject settingsCanvas;
+    public GameObject overlayCam;
+    public GameObject mainCam;
     private bool pauseActive = false;
     public  AudioListener pLayerListener;
 
@@ -21,20 +24,24 @@ public class PauseGame : MonoBehaviour
             {
                 case false:
                     PauseCanvas.SetActive(true);
+                    settingsCanvas.SetActive(false);
+                    overlayCam.SetActive(false);
                     pauseActive = true;
+                    overlayCam.GetComponent<CameraLookAround>().enabled = false;
+
                     Time.timeScale = 0;
                     Cursor.lockState = CursorLockMode.None;
                     AudioListener.pause = true;
-                    Debug.Log(AudioListener.pause);
-
                     break;
                 case true:
+                    overlayCam.SetActive(true);
                     PauseCanvas.SetActive(false);
+                    settingsCanvas.SetActive(false);
+                    overlayCam.GetComponent<CameraLookAround>().enabled = true;
                     pauseActive = false;
                     Time.timeScale = 1;
                     Cursor.lockState = CursorLockMode.Locked;
                     AudioListener.pause = false;
-                    Debug.Log(AudioListener.pause);
                     break;
             }
     }

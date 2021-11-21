@@ -164,9 +164,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b0536924bc920f248a28d8e81042e978, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f31d0f9262f711d4b8e0583d5d2b5dbf, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.525
+  m_Volume: 1
   m_Pitch: 0.75
   Loop: 1
   Mute: 0
@@ -517,6 +517,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1996631744}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1965403280}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3564,7 +3576,7 @@ GameObject:
   - component: {fileID: 1965403281}
   - component: {fileID: 1965403280}
   m_Layer: 0
-  m_Name: Game Manager
+  m_Name: Scene Loader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

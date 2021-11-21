@@ -11,7 +11,13 @@ public class CameraLookAround : MonoBehaviour
     public Transform playerBody;
 
     void Start()
-    {    sensitivity = PlayerPrefs.GetFloat(nameof(sensitivity));
+    {
+        if (PlayerPrefs.GetFloat(nameof(sensitivity)) == null || PlayerPrefs.GetFloat(nameof(sensitivity)) == 0) 
+        {
+            PlayerPrefs.SetFloat(nameof(sensitivity), 100);
+
+        }
+        sensitivity = PlayerPrefs.GetFloat(nameof(sensitivity));
         Cursor.lockState = CursorLockMode.Locked;
     }
     void Update()

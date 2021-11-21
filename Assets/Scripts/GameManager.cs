@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviour
         {
             //respawn player
         }
-
     }
     
 }
