@@ -5,17 +5,26 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
+    public AudioSource ambAudio;
+    public AudioSource chaseMusic;
     public static AudioManager Instance = null;
     public AudioSource player;
     public AudioClip startingMusic;
     public AudioMixer audioMixer;
+    public bool isAmbPlaying;
+    public AudioClip defaultAmb;
     
     public void SetVolume(float volume)  //volume slider controller
     {
         audioMixer.SetFloat("volume", volume);
         
     }
-    
+
+    private void Start()
+    {
+        isAmbPlaying = true;
+        SwapTrack(defaultAmb);
+    }
     private void Awake()
     {
         if (Instance == null)
@@ -50,5 +59,49 @@ public class AudioManager : MonoBehaviour
         }
         
         src.Play();
+    }
+
+    public void SwapTrack(AudioClip newClip)
+    {
+        StopAllCoroutines();
+
+        StartCoroutine(FadeTrack (newClip));        
+
+        isAmbPlaying = !isAmbPlaying;
+    }
+    public void ReturnToDefault()
+    {
+        SwapTrack(defaultAmb);
+    }
+    private IEnumerator FadeTrack(AudioClip newClip)
+    {
+        float timeToFade = 1.0f;
+        float timeTaken = 0;
+        if (isAmbPlaying)
+        {
+            chaseMusic.clip = newClip;
+            chaseMusic.Play();
+            while (timeTaken < timeToFade)
+            {
+                chaseMusic.volume = Mathf.Lerp(0, 1, timeTaken / timeToFade);
+                ambAudio.volume = Mathf.Lerp(1, 0, timeTaken / timeToFade);
+                timeTaken += Time.deltaTime;
+                yield return null;
+            }
+            ambAudio.Stop();
+        }
+        else
+        {
+            ambAudio.clip = newClip;
+            ambAudio.Play();
+            while (timeTaken < timeToFade)
+            {
+                ambAudio.volume = Mathf.Lerp(0, 1, timeTaken / timeToFade);
+                chaseMusic.volume = Mathf.Lerp(1, 0, timeTaken / timeToFade);
+                timeTaken += Time.deltaTime;
+                yield return null;
+            }
+            chaseMusic.Stop();
+        }
     }
 }
