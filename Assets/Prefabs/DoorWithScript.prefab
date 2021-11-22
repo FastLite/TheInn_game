@@ -177,6 +177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1732401780598033850}
+  doorCanBeClosed: 1
+  forcedClosed: 0
   needKey: 1
   keyID: 1
   angle: -120
@@ -193,18 +195,18 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -139580357364970142, guid: f9af1d164d6ad4c4dbc2a6877b11227a, type: 2}
   m_audioClip: {fileID: 8300000, guid: f47e16462266d7a45be953d78b61af0f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.352
   m_Pitch: 0.75
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 175
-  DopplerLevel: 1
+  DopplerLevel: 1.64
   MinDistance: 1
-  MaxDistance: 5
+  MaxDistance: 2.06
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -252,7 +254,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.19722222
       inSlope: 0
       outSlope: 0
       tangentMode: 0

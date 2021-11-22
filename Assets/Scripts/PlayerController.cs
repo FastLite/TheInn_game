@@ -1,7 +1,10 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor.Audio;
+using Random = UnityEngine.Random;
+
 public class PlayerController : MonoBehaviour
 {
     public bool canMove = true;
@@ -12,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float sprintSpeedModifier = 1.25f;
 
     public bool isSprinting;
+    public bool moving;
 
     public float gravity = 20.0f;
     private Vector3 velocity;
@@ -21,24 +25,36 @@ public class PlayerController : MonoBehaviour
     public float groundCheckDistance;
     private bool groundedPlayer;
     private bool isGrounded;
+    private bool soundIsPlaying;
     public LayerMask groundMask;
 
     public Vector3 moveDir;
 
     public AudioSource footsteps;
-    public AudioClip footstepSound;
+    public List<AudioClip> footstepSound;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         speedModifier = 1;
-        footsteps = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
         if (canMove)
             HandleCharacterMovement();
+        if (moveDir.x>=0.1 || moveDir.z>=0.1 || moveDir.x<=-0.1 || moveDir.z<=-0.1)
+        {
+            moving = true;
+        }
+        else
+        {
+            moving = false;
+            if (footsteps.isPlaying)
+            {
+                footsteps.Stop();
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -60,7 +76,6 @@ public class PlayerController : MonoBehaviour
         characterController.Move(moveDir * defaultSpeed * speedModifier * Time.deltaTime);
         velocity.y -= gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
-
         //Change speed modifer if player holds Sprint button
          isSprinting = Input.GetButton("Sprint");
         if (isSprinting) speedModifier = sprintSpeedModifier;
@@ -68,25 +83,16 @@ public class PlayerController : MonoBehaviour
         {
             speedModifier = 1;
         }
-
-        if (characterController.isGrounded == true && characterController.velocity.magnitude > .1
-         && GetComponent<AudioSource>().isPlaying == false)
+        if (moving && !footsteps.isPlaying)
         {
-            GetComponent<AudioSource>().Play();
-
+            PlayFootSteps(footstepSound[Random.Range(0,3)]);
         }
-       
     }
-    private void OnTriggerEnter(Collider other)
+
+    void PlayFootSteps(AudioClip clip)
     {
-        if (other.CompareTag("End"))
-        {
-            GameManager.instance.ENDgame(true);
-        }
-        else
-        {
-            Debug.Log(other.gameObject.tag);
-        }
+        footsteps.clip = clip;
+        footsteps.Play();
     }
     
  

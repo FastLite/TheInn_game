@@ -26,7 +26,7 @@ public class AudioTrigger : MonoBehaviour
         {
             source = gameObject.AddComponent<AudioSource>();
         }
-        if (attachedAudio.length > 20 || ignoreLenght)
+        if (ignoreLenght)
         {
             AudioManager.Instance.PlayMusic(attachedAudio, volume/100);
         }

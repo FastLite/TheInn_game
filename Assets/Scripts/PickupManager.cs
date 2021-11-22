@@ -36,12 +36,16 @@ public class PickupManager : MonoBehaviour
             Debug.DrawRay(mainCamera.position, mainCamera.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             Debug.Log("Did Hit pickup object");
             interactHint.SetActive(true);
-            if (Input.GetButtonDown("Interact"))
+            if (Input.GetButtonDown("Interact") && hit.collider.gameObject.GetComponent<Pickup>().enabled)
             {
                 GameObject item = hit.collider.gameObject;
                 ItemPickedUp(item.GetComponent<Pickup>());
                 if (item.GetComponent<Pickup>().type == Pickup.TypeOfPickup.Audio)
                 {
+                    item.GetComponent<Pickup>().enabled = false;
+                    var src = item.GetComponent<AudioSource>();
+                    src.clip = item.GetComponent<Pickup>().sound;
+                    src.Play();
                     return;
                 }
                 item.SetActive(false);
@@ -90,7 +94,6 @@ public class PickupManager : MonoBehaviour
                 //Add tp journal
                 break;
             case Pickup.TypeOfPickup.Audio:
-                AudioManager.Instance.PlaySound(gameObject.GetComponent<AudioSource>(),item.sound, 1);
                 //Add short description to journal
                 break;
             case Pickup.TypeOfPickup.Quest:
