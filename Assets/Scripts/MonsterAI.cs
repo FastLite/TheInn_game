@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -23,6 +24,12 @@ public class MonsterAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         FollowPlayer();
     }
+
+    private void FixedUpdate()
+    {
+        FollowPlayer();
+    }
+
     /*private void FixedUpdate()
     {
         // go to  location x

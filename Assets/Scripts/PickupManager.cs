@@ -16,6 +16,7 @@ public class PickupManager : MonoBehaviour
 
     [SerializeField]
     private float raycastDistance = 2;
+    private float waitSecondHint = 4;
     [FormerlySerializedAs("pickupHint")] public GameObject interactHint;
     public Transform canvas;
     public Transform mainCamera;
@@ -112,7 +113,7 @@ public class PickupManager : MonoBehaviour
         onScreenText.gameObject.SetActive(true);
 
         onScreenText.text = inputText;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(waitSecondHint);
         onScreenText.gameObject.SetActive(false);
 
     }

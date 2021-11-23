@@ -36,7 +36,7 @@ public class CameraLookAround : MonoBehaviour
     public void ChangeSensitivity(float newValue)
     {
         PlayerPrefs.SetFloat(nameof(sensitivity), newValue);
-        sensitivity = PlayerPrefs.GetFloat(nameof(sensitivity));
+        sensitivity = newValue;
         Debug.Log(sensitivity);
     }
 

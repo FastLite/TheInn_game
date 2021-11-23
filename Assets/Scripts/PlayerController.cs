@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Audio;
+using UnityEngine.Audio;
 using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
