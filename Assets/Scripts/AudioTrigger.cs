@@ -6,7 +6,6 @@ using UnityEngine;
 public class AudioTrigger : MonoBehaviour
 {
     public AudioClip attachedAudio;
-    public float volume = 1;
     public AudioSource source;
     public bool ignoreLenght;
     public bool didPlay;
@@ -18,7 +17,7 @@ public class AudioTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        Debug.Log("Entered the trigger");
         if (didPlay) return;
         didPlay = true;
         if (!other.CompareTag("Player")) return;
@@ -28,10 +27,10 @@ public class AudioTrigger : MonoBehaviour
         }
         if (ignoreLenght)
         {
-            AudioManager.Instance.PlayMusic(attachedAudio, volume/100);
+            AudioManager.Instance.PlayMusic(attachedAudio);
         }
         else
-            AudioManager.Instance.PlaySound(source,attachedAudio, volume/100);
+            AudioManager.Instance.PlaySound(source,attachedAudio);
 
     }
 }

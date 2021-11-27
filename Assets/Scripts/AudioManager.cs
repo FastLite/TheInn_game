@@ -37,27 +37,21 @@ public class AudioManager : MonoBehaviour
         }
         DontDestroyOnLoad (gameObject);
         
-        PlayMusic(startingMusic, 1);
+        PlayMusic(startingMusic);
     }
     
     //Play music makes audio source to play several clips at once, so it should be used for music and ambient or long sounds.
-    public void PlayMusic(AudioClip clip, float volume)
+    public void PlayMusic(AudioClip clip)
     {
         //add fade out and fade in here
-        player.PlayOneShot(clip, volume);
+        player.PlayOneShot(clip);
     }
     
     
     //Play sound forces audiosource to play only one audio clip
-    public void PlaySound(AudioSource src, AudioClip clip, float volume)
+    public void PlaySound(AudioSource src, AudioClip clip )
     {
-        
         src.clip = clip;
-        if (volume>0)
-        {
-            src.volume = volume;
-        }
-        
         src.Play();
     }
 

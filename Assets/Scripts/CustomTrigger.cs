@@ -9,9 +9,12 @@ public class CustomTrigger : MonoBehaviour
     public Door door = null;
     public GameObject myObject;
     public bool turnOn, lockDoor, playdoorAnimation;
+    private bool didPlay;
 
     private void OnTriggerEnter(Collider other)
     {
+        if (didPlay) return;
+        didPlay = true;
         if (anim!= null)
         {
             anim.Play(0);
@@ -26,12 +29,10 @@ public class CustomTrigger : MonoBehaviour
                 door.Open(!lockDoor);
             }
         }
-
         if (myObject!=null)
         {
             myObject.SetActive(turnOn);
         }
-        Destroy(gameObject);
-        
+
     }
 }
