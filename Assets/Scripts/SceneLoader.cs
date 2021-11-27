@@ -14,6 +14,7 @@ public class SceneLoader : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1;
+        MainMenuCursor();
     }
 
     public void RestartGame()
@@ -60,6 +61,15 @@ public class SceneLoader : MonoBehaviour
     {
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void MainMenuCursor()
+    {
+        //if scene is on main menu, cursor unlocked
+        if (SceneManager.GetSceneByName("0").isLoaded)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }
 
