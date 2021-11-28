@@ -27,7 +27,7 @@ public class EndGame : MonoBehaviour
     // after 25 seconds, game returns back to main menu
     IEnumerator BackToMenu()
     {
-        yield return new WaitForSeconds(25f);
+        yield return new WaitForSeconds(35f);
         SceneManager.LoadScene(0);
     }
 
