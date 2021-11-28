@@ -110,13 +110,13 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _METALNESS: 0
+    - _METALNESS: 0.34
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _REFLECTIONS_IOR: 1.52
-    - _REFLECTIONS_ROUGHNESS: 1
+    - _REFLECTIONS_IOR: 0.5
+    - _REFLECTIONS_ROUGHNESS: 0.52
     - _REFLECTIONS_WEIGHT: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
