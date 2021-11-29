@@ -43,6 +43,7 @@ public class PickupManager : MonoBehaviour
                 ItemPickedUp(item.GetComponent<Pickup>());
                 if (item.GetComponent<Pickup>().type == Pickup.TypeOfPickup.Audio)
                 {
+                    item.layer = 0;
                     item.GetComponent<Pickup>().enabled = false;
                     var src = item.GetComponent<AudioSource>();
                     src.clip = item.GetComponent<Pickup>().sound;
@@ -60,11 +61,12 @@ public class PickupManager : MonoBehaviour
             {
                 Debug.Log(hite.collider.GetComponent<Door>().keyID);
                 string currentdoorText = hit.collider.GetComponent<Door>().InteractWithDoor(currentKey);
+                StartCoroutine(TextOnScreen(currentdoorText));
+
                 if (currentdoorText == null)
                 {
                     return;
                 }
-                StartCoroutine(TextOnScreen(currentdoorText));
                 if (currentdoorText == "That was the right key")
                 {
                     keyImg.SetActive(false);

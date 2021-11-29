@@ -72,7 +72,14 @@ public class PlayerController : MonoBehaviour
         //Movement
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        moveDir = transform.right * x + transform.forward * z;
+        if (x>0||z>0)
+        {
+            moveDir = transform.right * x + transform.forward * z;
+        }
+        else
+        {
+            moveDir = new Vector3(0,0,0);
+        }
         characterController.Move(moveDir * defaultSpeed * speedModifier * Time.deltaTime);
         velocity.y -= gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);

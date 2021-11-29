@@ -182,7 +182,13 @@ MonoBehaviour:
   needKey: 1
   keyID: 1
   angle: -120
-  creak: {fileID: -691514715118345185}
+  doorSource: {fileID: -691514715118345185}
+  creaks:
+  - {fileID: 8300000, guid: bb41e7f5567a939489f69bfcbe0260ad, type: 3}
+  - {fileID: 8300000, guid: 09306062c1f94a442ad51a69e14c10d8, type: 3}
+  - {fileID: 8300000, guid: f47e16462266d7a45be953d78b61af0f, type: 3}
+  - {fileID: 8300000, guid: 8074ce1af7ccd6940a7ca6555542e300, type: 3}
+  - {fileID: 8300000, guid: f1bebc2fbdbb2b745af23103a2e35ad1, type: 3}
 --- !u!82 &-691514715118345185
 AudioSource:
   m_ObjectHideFlags: 0
