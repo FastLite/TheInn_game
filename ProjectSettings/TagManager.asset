@@ -8,6 +8,7 @@ TagManager:
   - End
   - door
   - Scare
+  - Described
   layers:
   - Default
   - TransparentFX

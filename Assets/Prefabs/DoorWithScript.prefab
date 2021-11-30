@@ -179,6 +179,7 @@ MonoBehaviour:
   animator: {fileID: 1732401780598033850}
   doorCanBeClosed: 1
   forcedClosed: 0
+  randomizeCreaks: 1
   needKey: 1
   keyID: 1
   angle: -120

@@ -77,7 +77,7 @@ public class PickupManager : MonoBehaviour
                     }
                 }
             }
-            else if(hite.collider.gameObject.CompareTag("Discribed"))
+            else if(hite.collider.gameObject.CompareTag("Described"))
             {
                 if (obj.GetComponent<ItemShowText>().didPLay)
                 {
