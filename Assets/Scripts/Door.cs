@@ -12,7 +12,7 @@ public class Door : MonoBehaviour
     public bool doorCanBeClosed = true;
     public bool forcedClosed = false;
     public bool randomizeCreaks = true;
-    
+
     [SerializeField]
     private bool needKey = false;
 
@@ -31,7 +31,7 @@ public class Door : MonoBehaviour
         }
         if (needKey && !doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("wait"))
         {
-            Debug.Log("Door needs key #"+keyID);
+            Debug.Log("Door needs key #" + keyID);
             if (item.objectID != keyID)
             {
                 Debug.Log("door is locked");
@@ -42,16 +42,16 @@ public class Door : MonoBehaviour
                 Open(true);
                 return "That was the right key";
             }
-            
-            
+
+
         }
         if (!doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("wait"))
         {
             Debug.Log("Door doesn't need a key ");
             Open(true);
-            return null ;
+            return null;
         }
-        if (doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("open") &&doorCanBeClosed)
+        if (doorOpen && animator.GetCurrentAnimatorStateInfo(0).IsName("open") && doorCanBeClosed)
         {
             Debug.Log("Door is closing");
             Open(false);
