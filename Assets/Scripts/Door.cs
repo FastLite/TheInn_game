@@ -12,7 +12,7 @@ public class Door : MonoBehaviour
     public bool doorCanBeClosed = true;
     public bool forcedClosed = false;
     public bool randomizeCreaks = true;
-
+ 
     [SerializeField]
     private bool needKey = false;
 

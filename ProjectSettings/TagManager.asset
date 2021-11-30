@@ -7,6 +7,7 @@ TagManager:
   - pickup
   - End
   - door
+  - Scare
   layers:
   - Default
   - TransparentFX

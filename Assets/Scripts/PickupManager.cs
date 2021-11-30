@@ -23,6 +23,7 @@ public class PickupManager : MonoBehaviour
     public Pickup currentKey;
 
 
+
     private void Start()
     {
         onScreenText.text = "";
@@ -79,6 +80,9 @@ public class PickupManager : MonoBehaviour
             interactHint.SetActive(false);
 
         }
+      
+            
+        
     }
     
     
@@ -109,6 +113,7 @@ public class PickupManager : MonoBehaviour
                 break;
         }
     }
+
 
     IEnumerator TextOnScreen(string inputText)
     {       
