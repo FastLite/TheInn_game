@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 6922188683989901574}
   m_Layer: 0
   m_Name: TimsAssets_Door
-  m_TagString: Untagged
+  m_TagString: door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -248,12 +248,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee18bc251263e5347bdb759a14000eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 95000012944575982}
   doorCanBeClosed: 1
   forcedClosed: 0
   randomizeCreaks: 1
   needKey: 0
-  keyID: 0
+  keyID: 1
   angle: -120
   doorSource: {fileID: 0}
   creaks: []

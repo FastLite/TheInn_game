@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource ambAudio;
     public AudioSource chaseMusic;
     public static AudioManager Instance = null;
-    public AudioSource player;
+    //public AudioSource player;
     public AudioClip startingMusic;
     public AudioMixer audioMixer;
     public bool isAmbPlaying;
@@ -44,7 +44,7 @@ public class AudioManager : MonoBehaviour
     public void PlayMusic(AudioClip clip)
     {
         //add fade out and fade in here
-        player.PlayOneShot(clip);
+        //player.PlayOneShot(clip);
     }
     
     
