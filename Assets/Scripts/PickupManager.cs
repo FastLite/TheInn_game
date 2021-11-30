@@ -55,24 +55,38 @@ public class PickupManager : MonoBehaviour
                 
             }
         }
-        else if (Physics.Raycast(mainCamera.position, mainCamera.TransformDirection(Vector3.forward), out var hite, raycastDistance) && hite.collider.gameObject.CompareTag("door"))
+        else if (Physics.Raycast(mainCamera.position, mainCamera.TransformDirection(Vector3.forward), out var hite, raycastDistance))
         {
-            interactHint.SetActive(true);
-            if (Input.GetButtonDown("Interact"))
+            GameObject obj = hite.collider.gameObject;
+            if (obj.CompareTag("door"))
             {
-                Debug.Log(hite.collider.GetComponent<Door>().keyID);
-                string currentdoorText = hit.collider.GetComponent<Door>().InteractWithDoor(currentKey);
-                StartCoroutine(TextOnScreen(currentdoorText));
+                interactHint.SetActive(true);
+                if (Input.GetButtonDown("Interact"))
+                {
+                    Debug.Log(obj.GetComponent<Door>().keyID);
+                    string currentDoorText = obj.GetComponent<Door>().InteractWithDoor(currentKey);
+                    StartCoroutine(TextOnScreen(currentDoorText));
 
-                if (currentdoorText == null)
+                    if (currentDoorText == null)
+                    {
+                        return;
+                    }
+                    if (currentDoorText == "That was the right key")
+                    {
+                        keyImg.SetActive(false);
+                    }
+                }
+            }
+            else if(hite.collider.gameObject.CompareTag("Discribed"))
+            {
+                if (obj.GetComponent<ItemShowText>().didPLay)
                 {
                     return;
                 }
-                if (currentdoorText == "That was the right key")
-                {
-                    keyImg.SetActive(false);
-                }
+                StartCoroutine(TextOnScreen(obj.GetComponent<ItemShowText>().discription));
+                obj.GetComponent<ItemShowText>().didPLay = true;
             }
+            
         }
         else
         {
