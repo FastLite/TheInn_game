@@ -10,7 +10,14 @@ public class CustomTrigger : MonoBehaviour
     public GameObject myObject;
     public bool turnOn, lockDoor, playdoorAnimation;
     private bool didPlay;
-
+    
+    
+    
+    
+    private void Awake()
+    {
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (didPlay) return;
