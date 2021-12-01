@@ -106,7 +106,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EMISSION_WEIGHT: 0.038
+    - _EMISSION_WEIGHT: 0.03
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -115,13 +115,13 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _REFLECTIONS_IOR: 1
+    - _REFLECTIONS_IOR: 0
     - _REFLECTIONS_ROUGHNESS: 0
-    - _REFLECTIONS_WEIGHT: 1
+    - _REFLECTIONS_WEIGHT: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TRANSPARENCY: 0.101
+    - _TRANSPARENCY: 0
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
@@ -129,5 +129,5 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EMISSION_COLOR: {r: 0.9150943, g: 0.9150943, b: 0.9150943, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _REFLECTIONS_COLOR: {r: 1, g: 1, b: 1, a: 1}
+    - _REFLECTIONS_COLOR: {r: 0.043137256, g: 0.039215688, b: 0.043137256, a: 1}
   m_BuildTextureStacks: []

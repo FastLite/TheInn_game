@@ -21,7 +21,14 @@ public class PickupManager : MonoBehaviour
     public Transform canvas;
     public Transform mainCamera;
     public Pickup currentKey;
-
+    [FormerlySerializedAs("name")] public TextMeshProUGUI noteName;
+    public TextMeshProUGUI text;
+    public GameObject noteGO;
+    public AudioSource playerAS;
+    public AudioClip notePickUPSound;
+    public AudioClip keyPickUPSound;
+    public GameObject camera1;
+    public GameObject camera2;
 
 
     private void Start()
@@ -94,6 +101,14 @@ public class PickupManager : MonoBehaviour
             interactHint.SetActive(false);
 
         }
+
+        if (noteGO.activeInHierarchy)
+        {
+            if (Input.GetButtonDown("Cancel"))
+            {
+                UnlockAfterNote();
+            }
+        }
       
             
         
@@ -109,8 +124,14 @@ public class PickupManager : MonoBehaviour
         {
             case Pickup.TypeOfPickup.Note:
                 //show note on the screen ↓
-                Instantiate(item.prefab, canvas);
-                inventory.Add(item);
+                noteName.text = item.nameOfItem;
+                text.text = item.noteText;
+                noteGO.SetActive(true);
+                FindObjectOfType<PlayerController>().canMove = false;
+                camera1.GetComponent<CameraLookAround>().enabled = false;
+                camera2.GetComponent<CameraLookAround>().enabled = false;
+                Cursor.lockState = CursorLockMode.None;
+                playerAS.PlayOneShot(notePickUPSound);
                 //Pause the game here
                 //Add tp journal
                 break;
@@ -121,6 +142,7 @@ public class PickupManager : MonoBehaviour
                 inventory.Add(item);
                 currentKey = item;
                 keyImg.SetActive(true);
+                playerAS.PlayOneShot(keyPickUPSound);
 
                 Debug.Log("key#" + item.objectID +" picked up and stored instead of " + currentKey);
                 //Add required informatio to journal
@@ -137,6 +159,17 @@ public class PickupManager : MonoBehaviour
         yield return new WaitForSeconds(waitSecondHint);
         onScreenText.gameObject.SetActive(false);
 
+    }
+
+    public void UnlockAfterNote()
+    {
+        noteGO.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        FindObjectOfType<PlayerController>().canMove = true;
+
+        camera1.GetComponent<CameraLookAround>().enabled = true;
+        camera2.GetComponent<CameraLookAround>().enabled = true;
+        FindObjectOfType<PlayerController>().canMove = true;
     }
 
    

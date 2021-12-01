@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Pickup : MonoBehaviour
@@ -16,6 +17,7 @@ public class Pickup : MonoBehaviour
     public GameObject prefab;
     public AudioClip sound;
     public int objectID;
+    public string noteText;
 
     private void Start()
     {

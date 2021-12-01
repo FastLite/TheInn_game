@@ -9,6 +9,14 @@ public class PlayerController : MonoBehaviour
 {
     public bool canMove = true;
 
+    public bool CanMovee
+    {
+        get => canMove;
+        set => canMove = value;
+    }
+
+    
+
     CharacterController characterController;
     public float defaultSpeed = 7.5f;
     private float speedModifier = 1f;

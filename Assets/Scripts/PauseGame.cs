@@ -11,6 +11,7 @@ public class PauseGame : MonoBehaviour
     public GameObject mainCam;
     private bool pauseActive = false;
     public  AudioListener pLayerListener;
+    public GameObject note;
 
     private void Start()
     {
@@ -48,7 +49,7 @@ public class PauseGame : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {if (Input.GetKeyDown(KeyCode.Escape))
+    {if (Input.GetKeyDown(KeyCode.Escape) && !note.activeInHierarchy)
         PauseUnpause();
     }
 }
