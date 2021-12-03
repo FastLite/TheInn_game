@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -29,6 +30,8 @@ public class PickupManager : MonoBehaviour
     public AudioClip keyPickUPSound;
     public GameObject camera1;
     public GameObject camera2;
+
+    public UnityEvent openLastDoor ;
 
 
     private void Start()
@@ -85,7 +88,7 @@ public class PickupManager : MonoBehaviour
                 }
             }
             else if(hite.collider.gameObject.CompareTag("Described"))
-            {
+            {Debug.Log("hit desribed");
                 if (obj.GetComponent<ItemShowText>().didPLay)
                 {
                     return;
@@ -137,6 +140,10 @@ public class PickupManager : MonoBehaviour
                 break;
             case Pickup.TypeOfPickup.Audio:
                 //Add short description to journal
+                if (item.nameOfItem =="last")
+                {
+                    Invoke(nameof(openLastDoor), item.sound.length);
+                }
                 break;
             case Pickup.TypeOfPickup.Quest:
                 inventory.Add(item);
