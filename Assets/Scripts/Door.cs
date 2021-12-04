@@ -19,6 +19,8 @@ public class Door : MonoBehaviour
     public int keyID;
     public float angle = -120;
 
+    public AudioSource doorLocked;
+
     [FormerlySerializedAs("creak")] public AudioSource doorSource;
     public List<AudioClip> creaks;
 
@@ -35,6 +37,7 @@ public class Door : MonoBehaviour
             if (item.objectID != keyID)
             {
                 Debug.Log("door is locked");
+                doorLocked.Play();
                 return "This door is locked, I gotta find a key";
             }
             else
