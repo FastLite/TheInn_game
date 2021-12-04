@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CustomTrigger : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class CustomTrigger : MonoBehaviour
     public GameObject myObject;
     public bool turnOn, lockDoor, playdoorAnimation;
     private bool didPlay;
+    public UnityEvent myEvent;
+    public int delay;
     
     
     
@@ -22,6 +25,11 @@ public class CustomTrigger : MonoBehaviour
     {
         if (didPlay) return;
         didPlay = true;
+        if (myEvent.GetPersistentEventCount()>0)
+        {
+            Debug.Log(myEvent.GetPersistentEventCount());
+            Invoke(nameof(DoEvent), delay);
+        }
         if (anim!= null)
         {
             anim.Play(0);
@@ -41,5 +49,12 @@ public class CustomTrigger : MonoBehaviour
             myObject.SetActive(turnOn);
         }
 
+        
     }
+
+    private void DoEvent()
+    {
+        myEvent.Invoke();
+    }
+    
 }
