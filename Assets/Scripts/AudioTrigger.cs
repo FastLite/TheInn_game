@@ -9,6 +9,7 @@ public class AudioTrigger : MonoBehaviour
     public AudioSource source;
     public bool ignoreLenght;
     public bool didPlay;
+    public bool useDelay = false;
 
     private void Start()
     {
@@ -17,6 +18,10 @@ public class AudioTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (useDelay)
+        {
+            return;
+        }
         Debug.Log("Entered the trigger");
         if (didPlay) return;
         didPlay = true;
@@ -31,6 +36,19 @@ public class AudioTrigger : MonoBehaviour
         }
         else
             AudioManager.Instance.PlaySound(source,attachedAudio);
-
+        
     }
+
+    public IEnumerator PlayWithDelay(int delay)
+    {
+        yield return new WaitForSeconds(delay);
+        source.Play();
+    }
+
+    public void StartThing(int delay)
+    {
+        StartCoroutine(PlayWithDelay(delay));
+    }
+    
+    
 }
