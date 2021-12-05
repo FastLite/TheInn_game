@@ -329,7 +329,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Vladislav,\nTyler\n\nVladislav\n\n\nVladislav\n\nTaurean\n\nSpencer\n\nVladislav\n\nHongsheng\n\n\nTaurean,\nVladislav,\nTyler\n\nHongsheng\n\nTyler,\nHongsheng\n\nVladislav\n\nVladislav\n\n\nTaurean\n\nTaurean\n\nSpencer,\nVladislav\n\nSpencer\n\nVlad
+  m_text: "Vladislav,\nTyler\n\nVladislav\n\n\nVladislav\n\nTaurean, Vladislav \n\nSpencer\n\nVladislav\n\nHongsheng\n\n\nTaurean,\nVladislav,\nTyler\n\nHongsheng\n\nTyler,\nHongsheng\n\nVladislav\n\nVladislav\n\n\nTaurean\n\nTaurean\n\nSpencer,\nVladislav\n\nSpencer\n\nVlad
     Hoshenko\n\n\nRhys Lourie\n\nCele\u0304s Emmerson\n\nCindy Dzib"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c369e70311a84fb48a176013bec109f1, type: 2}
