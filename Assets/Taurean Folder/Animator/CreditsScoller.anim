@@ -22,25 +22,25 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -1492.7329
+        value: -1645.01
         inSlope: 271.71823
-        outSlope: 192.65074
+        outSlope: 180.77763
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.20660321
       - serializedVersion: 3
-        time: 30.016666
-        value: 4290
-        inSlope: 192.65074
+        time: 34.733334
+        value: 4634
+        inSlope: 180.77763
         outSlope: 0
         tangentMode: 69
         weightedMode: 0
-        inWeight: 0
-        outWeight: 0.42240837
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       - serializedVersion: 3
-        time: 34.816666
-        value: 4290
+        time: 37.95
+        value: 4634
         inSlope: -0
         outSlope: -58.69447
         tangentMode: 5
@@ -75,7 +75,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 34.816666
+    m_StopTime: 37.95
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -96,25 +96,25 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -1492.7329
+        value: -1645.01
         inSlope: 271.71823
-        outSlope: 192.65074
+        outSlope: 180.77763
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.20660321
       - serializedVersion: 3
-        time: 30.016666
-        value: 4290
-        inSlope: 192.65074
+        time: 34.733334
+        value: 4634
+        inSlope: 180.77763
         outSlope: 0
         tangentMode: 69
         weightedMode: 0
-        inWeight: 0
-        outWeight: 0.42240837
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       - serializedVersion: 3
-        time: 34.816666
-        value: 4290
+        time: 37.95
+        value: 4634
         inSlope: -0
         outSlope: -58.69447
         tangentMode: 5

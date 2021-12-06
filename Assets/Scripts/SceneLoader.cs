@@ -66,7 +66,7 @@ public class SceneLoader : MonoBehaviour
     public void MainMenuCursor()
     {
         //if scene is on main menu, cursor unlocked
-        if (SceneManager.GetSceneByName("0").isLoaded)
+        if (SceneManager.GetSceneAt(0).isLoaded)
         {
             Cursor.lockState = CursorLockMode.None;
         }

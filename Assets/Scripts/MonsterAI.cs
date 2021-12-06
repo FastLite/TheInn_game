@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -23,6 +24,7 @@ public class MonsterAI : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
         FollowPlayer();
+        StartCoroutine(stop());
     }
 
     private void FixedUpdate()
@@ -77,9 +79,9 @@ public class MonsterAI : MonoBehaviour
         
     }*/
 
-    private void OnCollisionEnter(Collision other)
+    IEnumerator stop()
     {
-        GameManager.instance.ENDgame(false);
-        
+        yield return new WaitForSeconds(5);
+        gameObject.SetActive(false);
     }
 }

@@ -142,7 +142,7 @@ public class PickupManager : MonoBehaviour
                 //Add short description to journal
                 if (item.nameOfItem =="last")
                 {
-                    Invoke(nameof(openLastDoor), item.sound.length);
+                    StartCoroutine(DoEvent(item.sound.length));
                 }
                 break;
             case Pickup.TypeOfPickup.Quest:
@@ -155,6 +155,7 @@ public class PickupManager : MonoBehaviour
                 //Add required informatio to journal
                 break;
         }
+        Debug.Log(item.nameOfItem);
     }
 
 
@@ -177,6 +178,12 @@ public class PickupManager : MonoBehaviour
         camera1.GetComponent<CameraLookAround>().enabled = true;
         camera2.GetComponent<CameraLookAround>().enabled = true;
         FindObjectOfType<PlayerController>().canMove = true;
+    }
+
+    IEnumerator DoEvent(float time)
+    {
+        yield return new WaitForSeconds(time) ;
+        openLastDoor.Invoke();
     }
 
    

@@ -12,7 +12,7 @@ public class CameraLookAround : MonoBehaviour
 
     void Start()
     {
-        if (PlayerPrefs.GetFloat(nameof(sensitivity)) == 0) 
+        if (PlayerPrefs.GetFloat(nameof(sensitivity)) < 20) 
         {
             PlayerPrefs.SetFloat(nameof(sensitivity), 100);
 

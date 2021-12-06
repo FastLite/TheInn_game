@@ -20,6 +20,7 @@ public class Door : MonoBehaviour
     public float angle = -120;
 
     public AudioSource doorLocked;
+    public AudioClip rattle;
 
     [FormerlySerializedAs("creak")] public AudioSource doorSource;
     public List<AudioClip> creaks;
