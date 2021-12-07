@@ -54,11 +54,13 @@ public class PickupManager : MonoBehaviour
                 ItemPickedUp(item.GetComponent<Pickup>());
                 if (item.GetComponent<Pickup>().type == Pickup.TypeOfPickup.Audio)
                 {
-                    item.layer = 0;
+                    item.layer = 1;
+                    Debug.Log(item.layer);
                     item.GetComponent<Pickup>().enabled = false;
                     var src = item.GetComponent<AudioSource>();
                     src.clip = item.GetComponent<Pickup>().sound;
                     src.Play();
+                    
                     return;
                 }
                 item.SetActive(false);
