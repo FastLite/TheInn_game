@@ -26,19 +26,19 @@ public class PauseGame : MonoBehaviour
                 case false:
                     PauseCanvas.SetActive(true);
                     settingsCanvas.SetActive(false);
-                    overlayCam.SetActive(false);
+                    //overlayCam.SetActive(false);
                     pauseActive = true;
-                    overlayCam.GetComponent<CameraLookAround>().enabled = false;
+                   // overlayCam.GetComponent<CameraLookAround>().enabled = false;
 
                     Time.timeScale = 0;
                     Cursor.lockState = CursorLockMode.None;
                     AudioListener.pause = true;
                     break;
                 case true:
-                    overlayCam.SetActive(true);
+                    //overlayCam.SetActive(true);
                     PauseCanvas.SetActive(false);
                     settingsCanvas.SetActive(false);
-                    overlayCam.GetComponent<CameraLookAround>().enabled = true;
+                    //overlayCam.GetComponent<CameraLookAround>().enabled = true;
                     pauseActive = false;
                     Time.timeScale = 1;
                     Cursor.lockState = CursorLockMode.Locked;

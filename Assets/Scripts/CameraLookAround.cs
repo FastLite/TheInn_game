@@ -9,6 +9,7 @@ public class CameraLookAround : MonoBehaviour
     public float sensitivity = 2.0f;
     private float xRotation = 0;
     public Transform playerBody;
+    public Transform highlightCamera;
 
     void Start()
     {
@@ -23,14 +24,12 @@ public class CameraLookAround : MonoBehaviour
     void Update()
     {
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+        xRotation += Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
 
-        
-        
-        xRotation -= mouseY;
         xRotation = Mathf.Clamp( xRotation,-80, 85);
-        transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
-        playerBody.Rotate(Vector3.up * mouseX);    
+        transform.eulerAngles = new Vector3(-xRotation, transform.eulerAngles.y+mouseX, 0);
+        highlightCamera.eulerAngles = transform.eulerAngles;
+        playerBody.eulerAngles = new Vector3(0, playerBody.eulerAngles.y+mouseX, 0);
     }
 
     public void ChangeSensitivity(float newValue)
