@@ -90,7 +90,7 @@ public class PickupManager : MonoBehaviour
                 }
             }
             else if(hite.collider.gameObject.CompareTag("Described"))
-            {Debug.Log("hit desribed");
+            {
                 if (obj.GetComponent<ItemShowText>().didPLay)
                 {
                     return;
@@ -102,9 +102,7 @@ public class PickupManager : MonoBehaviour
         }
         else
         {
-            Debug.DrawRay(mainCamera.position, mainCamera.TransformDirection(Vector3.forward)* hit.distance, Color.red);
             interactHint.SetActive(false);
-
         }
 
         if (noteGO.activeInHierarchy)

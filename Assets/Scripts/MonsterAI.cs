@@ -81,7 +81,7 @@ public class MonsterAI : MonoBehaviour
 
     IEnumerator stop()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(15);
         gameObject.SetActive(false);
     }
 }
