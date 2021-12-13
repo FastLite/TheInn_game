@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class SceneLoader : MonoBehaviour
 
     public GameObject loadingScreen;
     public Slider loadingBar;
-    public Text progressText;
+    public TextMeshProUGUI progressText;
     private void Start()
     {
         Time.timeScale = 1;
@@ -42,7 +43,7 @@ public class SceneLoader : MonoBehaviour
         {
             float progress = Mathf.Clamp01(operation.progress / .9f);
             loadingBar.value = progress;
-            progressText.text = "Loading... " + progress * 100f + "%";
+            progressText.text = "Loading... " + progress * 100 + "%";
             yield return null;
         }
     }
