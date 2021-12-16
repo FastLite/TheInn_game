@@ -2387,6 +2387,10 @@ PrefabInstance:
       propertyPath: m_enableAutoSizing
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4919677015196674953, guid: 5b7c7d76a31355c4c8770320f9a7f46e, type: 3}
+      propertyPath: m_text
+      value: Sound
+      objectReference: {fileID: 0}
     - target: {fileID: 6660353528787148651, guid: 5b7c7d76a31355c4c8770320f9a7f46e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.45333332
@@ -2787,7 +2791,8 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6660353529584754489, guid: 5b7c7d76a31355c4c8770320f9a7f46e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5b7c7d76a31355c4c8770320f9a7f46e, type: 3}
 --- !u!1 &1793600737
 GameObject:

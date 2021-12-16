@@ -43,7 +43,7 @@ public class SceneLoader : MonoBehaviour
         {
             float progress = Mathf.Clamp01(operation.progress / .9f);
             loadingBar.value = progress;
-            progressText.text = "Loading... " + progress * 100 + "%";
+            progressText.text = "Loading... " + (progress * 100).ToString("#.00") + "%";
             yield return null;
         }
     }

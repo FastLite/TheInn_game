@@ -6,11 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 29c7e63d0ea672248b415ca2b9c4e329
+    path: Assets/Scenes/PreRendered.unity
+    guid: de0554a0aa3380e4fbdd8e15e5453fe6
   - enabled: 1
     path: Assets/Scenes/Main_Game_scene.unity
     guid: c1937ab6c684fa9488d0db34a2365c5c
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+    guid: 397d1d6a1d2344b45a40480552550df0
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 29c7e63d0ea672248b415ca2b9c4e329
   - enabled: 0
     path: Assets/Scenes/Alpha Build.unity
     guid: 8bd61cca28ab254419c6dc02ce6dd577
@@ -18,9 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Test Build.unity
     guid: cb7e3ac4e877c6241a83175a41f560d2
   - enabled: 0
-    path: Assets/Scenes/FirstCombination.unity
-    guid: 0e78596a8918cee47a495c2812c19c4a
-  - enabled: 1
-    path: Assets/Scenes/EndGame.unity
-    guid: 397d1d6a1d2344b45a40480552550df0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

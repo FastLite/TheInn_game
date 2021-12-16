@@ -20,7 +20,7 @@ public class EndGame : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel") && skipCredits)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("MainMenu");
         }
     }
 
@@ -28,7 +28,7 @@ public class EndGame : MonoBehaviour
     IEnumerator BackToMenu()
     {
         yield return new WaitForSeconds(35f);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenu");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,7 +36,7 @@ public class EndGame : MonoBehaviour
         skipCredits = true;
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("EndGame");
         }
     }
 }
