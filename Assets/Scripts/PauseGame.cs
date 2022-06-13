@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class PauseGame : MonoBehaviour
@@ -12,6 +13,7 @@ public class PauseGame : MonoBehaviour
     private bool pauseActive = false;
     public  AudioListener pLayerListener;
     public GameObject note;
+    public ControlMenu cm;
 
     private void Start()
     {
@@ -21,9 +23,18 @@ public class PauseGame : MonoBehaviour
     // Start is called before the first frame update
     public void PauseUnpause()
     {
+        //cast to menu controller and clear selected object
+        
             switch (pauseActive)
             {
                 case false:
+                    EventSystem.current.SetSelectedGameObject(null);
+                    if (cm == null)
+                    {
+                        cm = FindObjectOfType<ControlMenu>();
+                    }
+                    EventSystem.current.SetSelectedGameObject(cm.pauseFirstButton);
+                    
                     PauseCanvas.SetActive(true);
                     settingsCanvas.SetActive(false);
                     overlayCam.SetActive(false);
@@ -49,7 +60,11 @@ public class PauseGame : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {if (Input.GetKeyDown(KeyCode.Escape) && !note.activeInHierarchy)
-        PauseUnpause();
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && !note.activeInHierarchy)
+        {
+            PauseUnpause();
+        }
+        
     }
 }

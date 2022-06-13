@@ -14,6 +14,7 @@ using System.Collections.Generic;
 /// </summary>
 public class LightFlicker : MonoBehaviour 
 {
+    
     [Tooltip("External light to flicker; you can leave this null if you attach script to a light")]
     public new Light light;
     [Tooltip("Minimum random light intensity")]
@@ -22,7 +23,7 @@ public class LightFlicker : MonoBehaviour
     public float maxIntensity = 1f;
     [Tooltip("How much to smooth out the randomness; lower values = sparks, higher = lantern")]
     [Range(1, 50)]
-    public int smoothing = 5;
+    public int smoothing = 30;
 
     // Continuous average calculation via FIFO queue
     // Saves us iterating every time we update, we just change by the delta

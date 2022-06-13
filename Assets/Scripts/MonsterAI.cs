@@ -66,7 +66,6 @@ public class MonsterAI : MonoBehaviour
             GoToNewDestination();
         }*/
         agent.destination = player.transform.position;
-        Debug.Log("Моб гонится за игроком");
        // isFollowingPlayer = true;
     }
     /*public void GoToNewDestination()

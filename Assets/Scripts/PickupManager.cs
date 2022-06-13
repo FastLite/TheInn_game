@@ -38,7 +38,12 @@ public class PickupManager : MonoBehaviour
     {
         onScreenText.text = "";
         onScreenText.alpha = 1;
+        if (Input.GetJoystickNames().Length == 0)
+        {
+            interactHint.GetComponent<TMP_Text>().text = "Press X or □ to Interact";
+        }
     }
+    
 
     private void Update()
     {
@@ -48,7 +53,7 @@ public class PickupManager : MonoBehaviour
             Debug.DrawRay(mainCamera.position, mainCamera.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             Debug.Log("Did Hit pickup object");
             interactHint.SetActive(true);
-            if (Input.GetButtonDown("Interact") && hit.collider.gameObject.GetComponent<Pickup>().enabled)
+            if ((Input.GetButtonDown("Interact")|| Input.GetKey(KeyCode.JoystickButton2)) && hit.collider.gameObject.GetComponent<Pickup>().enabled)
             {
                 GameObject item = hit.collider.gameObject;
                 ItemPickedUp(item.GetComponent<Pickup>());
@@ -73,7 +78,7 @@ public class PickupManager : MonoBehaviour
             if (obj.CompareTag("door"))
             {
                 interactHint.SetActive(true);
-                if (Input.GetButtonDown("Interact"))
+                if (Input.GetButtonDown("Interact")|| Input.GetKey(KeyCode.JoystickButton2))
                 {
                     Debug.Log(obj.GetComponent<Door>().keyID);
                     string currentDoorText = obj.GetComponent<Door>().InteractWithDoor(currentKey);
@@ -107,7 +112,7 @@ public class PickupManager : MonoBehaviour
 
         if (noteGO.activeInHierarchy)
         {
-            if (Input.GetButtonDown("Cancel"))
+            if (Input.GetButtonDown("Cancel")|| Input.GetKey(KeyCode.JoystickButton1))
             {
                 UnlockAfterNote();
             }
