@@ -19,7 +19,11 @@ public class CustomTrigger : MonoBehaviour
     
     private void Awake()
     {
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        if (gameObject.GetComponent<MeshRenderer>() !=null)
+        {
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+        }
+        
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -29,6 +33,10 @@ public class CustomTrigger : MonoBehaviour
         {
             Debug.Log(myEvent.GetPersistentEventCount());
             Invoke(nameof(DoEvent), delay);
+        }
+        if (myObject!=null)
+        {
+            myObject.SetActive(turnOn);
         }
         if (anim!= null)
         {
@@ -44,10 +52,7 @@ public class CustomTrigger : MonoBehaviour
                 door.Open(!lockDoor);
             }
         }
-        if (myObject!=null)
-        {
-            myObject.SetActive(turnOn);
-        }
+        
 
         
     }
@@ -55,6 +60,10 @@ public class CustomTrigger : MonoBehaviour
     private void DoEvent()
     {
         myEvent.Invoke();
+        if (delay>0)
+        {
+            Debug.Log("this was delayed");
+        }
     }
     
 }

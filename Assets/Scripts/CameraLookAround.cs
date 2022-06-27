@@ -46,7 +46,6 @@ public class CameraLookAround : MonoBehaviour
                 if (transform.localRotation.x * 130 <80) //>-80
                 {
                     RotateVertical();
-                    Debug.Log("going down");
                 }
                 
             }

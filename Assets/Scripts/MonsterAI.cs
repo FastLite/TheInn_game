@@ -10,6 +10,8 @@ public class MonsterAI : MonoBehaviour
     private float distance;
     //private bool isFollowingPlayer;
     private GameObject player;
+
+    [SerializeField] private Transform restartTransform;
     /*public int destinationNumber;
     public float distanceCheck = 0.3f;
     public float playerDistanceCheck = 3f;
@@ -82,5 +84,23 @@ public class MonsterAI : MonoBehaviour
     {
         yield return new WaitForSeconds(15);
         gameObject.SetActive(false);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            TeleportPlayerToCheckPoint(collision.gameObject);
+        }
+    }
+
+    private void TeleportPlayerToCheckPoint(GameObject playerGO)
+    {
+        playerGO.transform.position = restartTransform.position;
+        playerGO.transform.rotation = restartTransform.rotation;
+        //fade in fadeout
+        //reset light
+        //reset triggers
+        //reset monster
     }
 }

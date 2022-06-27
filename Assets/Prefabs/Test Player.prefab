@@ -59,14 +59,14 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 25.7
+  far clip plane: 30
   field of view: 65
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1280
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -198,6 +198,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -317,14 +318,14 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 25.7
+  far clip plane: 15
   field of view: 65
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 247
+    m_Bits: 1015
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -477,6 +478,7 @@ MonoBehaviour:
   defaultSpeed: 2
   sprintSpeedModifier: 1.5
   isSprinting: 0
+  moving: 0
   gravity: 20
   groundCheck: {fileID: 8039625683802348107}
   groundCheckDistance: 0
@@ -484,6 +486,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   moveDir: {x: 0, y: 0, z: 0}
+  footsteps: {fileID: 0}
+  footstepSound: []
 --- !u!114 &8039625684974258448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,11 +505,24 @@ MonoBehaviour:
   ignoreMe:
     serializedVersion: 2
     m_Bits: 0
+  onScreenText: {fileID: 0}
+  fadeDuration: 2
   raycastDistance: 2
-  pickupHint: {fileID: 0}
+  interactHint: {fileID: 0}
   canvas: {fileID: 0}
   mainCamera: {fileID: 8039625684840221839}
   currentKey: {fileID: 0}
+  noteName: {fileID: 0}
+  text: {fileID: 0}
+  noteGO: {fileID: 0}
+  playerAS: {fileID: 0}
+  notePickUPSound: {fileID: 0}
+  keyPickUPSound: {fileID: 0}
+  camera1: {fileID: 0}
+  camera2: {fileID: 0}
+  openLastDoor:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!82 &8039625684974258455
 AudioSource:
   m_ObjectHideFlags: 0

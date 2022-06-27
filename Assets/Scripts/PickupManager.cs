@@ -38,7 +38,7 @@ public class PickupManager : MonoBehaviour
     {
         onScreenText.text = "";
         onScreenText.alpha = 1;
-        if (Input.GetJoystickNames().Length == 0)
+        if (Input.GetJoystickNames().Length != 0)
         {
             interactHint.GetComponent<TMP_Text>().text = "Press X or □ to Interact";
         }
@@ -112,7 +112,7 @@ public class PickupManager : MonoBehaviour
 
         if (noteGO.activeInHierarchy)
         {
-            if (Input.GetButtonDown("Cancel")|| Input.GetKey(KeyCode.JoystickButton1))
+            if (Input.GetButtonDown("Cancel")|| Input.GetKey(KeyCode.JoystickButton1)|| Input.GetButtonDown("Pause"))
             {
                 UnlockAfterNote();
             }

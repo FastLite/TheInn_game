@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public bool gameIsEnded = false;
     public Slider sensativity;
     public Slider volume;
+    public GameObject UIPointer;
     
     public List<Pickup> allPickups = new List<Pickup>();
     public List<Pickup> playerPickedPickups = new List<Pickup>();
@@ -30,15 +31,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.GetFloat("Volume") <0.1)
-        {
-            volume.value = 0.8f;
-        }
-        else
-        {
-            volume.value = PlayerPrefs.GetFloat("Volume");
+        
+        volume.value = PlayerPrefs.GetFloat("Volume");
 
-        }
+        
         sensativity.value = PlayerPrefs.GetFloat("sensitivity");
     }
 
